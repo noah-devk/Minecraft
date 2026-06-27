@@ -206,8 +206,8 @@
 </div>
 <form class="space-y-6" id="auth-form">
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Tên người dùng</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="auth-username" placeholder="MinecraftPlayer123" required="" type="text"/>
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Tên người dùng / Email</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="auth-username" placeholder="minecraft_player@email.com" required="" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
@@ -219,15 +219,6 @@
 <button class="text-on-surface-variant font-body-md text-sm hover:text-xp-green transition-colors underline" id="auth-toggle-mode" type="button">Bạn chưa có tài khoản? Đăng ký ngay</button>
 </div>
 </form>
-<!-- Success View -->
-<div class="hidden space-y-6 text-center py-4" id="auth-success-view">
-<div class="w-16 h-16 bg-xp-green/20 text-xp-green rounded-full flex items-center justify-center mx-auto mb-4 border border-xp-green/30">
-<span class="material-symbols-outlined text-4xl">verified</span>
-</div>
-<h4 class="font-headline-md text-primary" id="auth-success-msg">Đăng nhập thành công!</h4>
-<p class="font-body-md text-on-surface-variant">Chào mừng quay trở lại, <span class="text-xp-green font-bold" id="auth-display-name"></span>. Bây giờ bạn có thể truy cập kho lưu trữ bản cập nhật.</p>
-<button class="w-full bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase" id="auth-continue-btn">TIẾP TỤC</button>
-</div>
 </div>
 </div>
 <!-- Top AppBar -->
@@ -277,7 +268,7 @@
 <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
 <div id="download-cta-container">
 <button class="hidden pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" id="trigger-download-modal">
-<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>download</span> TẢI MINECRAFT MIỄN PHÍ
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>download</span> TẢI XUỐNG NGAY
                     </button>
 <button class="pixel-texture bg-surface-container-highest text-white font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-auth-trigger" id="dummy-download-btn">
 <span class="material-symbols-outlined">lock</span> ĐĂNG NHẬP ĐỂ TẢI XUỐNG
@@ -351,6 +342,11 @@
 <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/50">
 <span class="material-symbols-outlined">star</span>
 </div>
+<a class="w-10 h-10 bg-xp-green/20 rounded-full flex items-center justify-center text-xp-green hover:bg-xp-green hover:text-black transition-colors border border-xp-green/30" href="https://discord.gg/6XMcE3AAx" target="_blank" title="Join our Discord">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path>
+</svg>
+</a>
 </div>
 </div>
 </div>
@@ -405,10 +401,10 @@
 <div class="space-y-6" id="os-selection-view">
 <p class="font-body-md text-on-surface-variant">Chọn hệ điều hành của bạn để bắt đầu tải bản cập nhật Hang Lưu Huỳnh:</p>
 <div class="grid grid-cols-2 gap-4">
-<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" onclick="startOSDownload('WINDOWS')">
+<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-win-btn">
 <span class="material-symbols-outlined text-3xl">desktop_windows</span>WINDOWS (.exe)
                     </button>
-<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" onclick="startOSDownload('MACOS')">
+<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-mac-btn">
 <span class="material-symbols-outlined text-3xl">desktop_mac</span>MACOS (.pkg)
                     </button>
 </div>
@@ -430,9 +426,7 @@
 <script>
     // --- Global State Management ---
     const State = {
-        isLoggedIn: false,
-        currentUser: null,
-        users: JSON.parse(localStorage.getItem('mc_users') || '{}'),
+        isLoggedIn: localStorage.getItem('logged_in') === 'true',
         isLoginMode: true
     };
 
@@ -446,9 +440,6 @@
         authSubmitBtn: document.getElementById('auth-submit-btn'),
         authToggleBtn: document.getElementById('auth-toggle-mode'),
         authErrorMsg: document.getElementById('auth-error-msg'),
-        authSuccessView: document.getElementById('auth-success-view'),
-        authDisplayName: document.getElementById('auth-display-name'),
-        authContinueBtn: document.getElementById('auth-continue-btn'),
         loginBtnHeader: document.getElementById('login-btn-header'),
         userProfileWidget: document.getElementById('user-profile-widget'),
         userProfileName: document.getElementById('user-profile-name'),
@@ -466,7 +457,10 @@
         downloadProgressBar: document.getElementById('download-progress-bar'),
         downloadStatusText: document.getElementById('download-status-text'),
         closeDownloadModalBtn: document.getElementById('close-modal'),
-        downloadFileName: document.getElementById('download-file-name')
+        downloadFileName: document.getElementById('download-file-name'),
+        dlWinBtn: document.getElementById('dl-win-btn'),
+        dlMacBtn: document.getElementById('dl-mac-btn'),
+        mobileAuthTrigger: document.getElementById('mobile-auth-trigger')
     };
 
     // --- Auth Logic ---
@@ -481,8 +475,6 @@
     function openAuthModal() {
         Dom.authModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
-        Dom.authForm.classList.remove('hidden');
-        Dom.authSuccessView.classList.add('hidden');
         Dom.authErrorMsg.classList.add('hidden');
     }
 
@@ -491,27 +483,37 @@
         document.body.style.overflow = '';
     }
 
-    function updateUIForLoggedIn(username) {
-        Dom.loginBtnHeader.classList.add('hidden');
-        Dom.userProfileWidget.classList.remove('hidden');
-        Dom.userProfileWidget.classList.add('flex');
-        Dom.userProfileName.innerText = username.toUpperCase();
-        
-        Dom.dummyDownloadBtn.classList.add('hidden');
-        Dom.mainDownloadBtn.classList.remove('hidden');
-        Dom.mainDownloadBtn.classList.add('flex');
+    function performLogin() {
+        localStorage.setItem('logged_in', 'true');
+        State.isLoggedIn = true;
+        closeAuthModal();
+        updateUI();
     }
 
-    function updateUIForLoggedOut() {
-        Dom.loginBtnHeader.classList.remove('hidden');
-        Dom.userProfileWidget.classList.add('hidden');
-        Dom.userProfileWidget.classList.remove('flex');
-        
-        Dom.dummyDownloadBtn.classList.remove('hidden');
-        Dom.dummyDownloadBtn.classList.add('flex');
-        Dom.mainDownloadBtn.classList.add('hidden');
-        Dom.mainDownloadBtn.classList.remove('flex');
-        localStorage.removeItem('currentUser');
+    function updateUI() {
+        if (State.isLoggedIn) {
+            Dom.loginBtnHeader.classList.add('hidden');
+            Dom.userProfileWidget.classList.remove('hidden');
+            Dom.userProfileWidget.classList.add('flex');
+            Dom.userProfileName.innerText = "PLAYER123";
+            
+            Dom.dummyDownloadBtn.classList.add('hidden');
+            Dom.mainDownloadBtn.classList.remove('hidden');
+            Dom.mainDownloadBtn.classList.add('flex');
+            
+            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = "ĐÃ ĐĂNG NHẬP";
+        } else {
+            Dom.loginBtnHeader.classList.remove('hidden');
+            Dom.userProfileWidget.classList.add('hidden');
+            Dom.userProfileWidget.classList.remove('flex');
+            
+            Dom.dummyDownloadBtn.classList.remove('hidden');
+            Dom.dummyDownloadBtn.classList.add('flex');
+            Dom.mainDownloadBtn.classList.add('hidden');
+            Dom.mainDownloadBtn.classList.remove('flex');
+
+            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = "ĐĂNG NHẬP";
+        }
     }
 
     // --- Mobile Menu Logic ---
@@ -575,51 +577,31 @@
 
     // --- Initialization ---
     function init() {
+        // Auth Event Listeners
         document.querySelectorAll('.btn-auth-trigger').forEach(btn => {
-            btn.addEventListener('click', openAuthModal);
+            btn.addEventListener('click', () => {
+                if (!State.isLoggedIn) {
+                    openAuthModal();
+                }
+            });
         });
 
         Dom.closeAuthBtn.addEventListener('click', closeAuthModal);
         Dom.authBackdrop.addEventListener('click', closeAuthModal);
         Dom.authToggleBtn.addEventListener('click', toggleAuthMode);
-        Dom.authContinueBtn.addEventListener('click', closeAuthModal);
 
         Dom.authForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('auth-username').value.trim();
-            const password = document.getElementById('auth-password').value;
-
-            if (State.isLoginMode) {
-                if (State.users[username] && State.users[username] === password) {
-                    localStorage.setItem('currentUser', username);
-                    showAuthSuccess(username, 'Đăng nhập thành công!');
-                } else {
-                    Dom.authErrorMsg.innerText = 'Tên đăng nhập hoặc mật khẩu không đúng.';
-                    Dom.authErrorMsg.classList.remove('hidden');
-                }
-            } else {
-                if (State.users[username]) {
-                    Dom.authErrorMsg.innerText = 'Người dùng đã tồn tại.';
-                    Dom.authErrorMsg.classList.remove('hidden');
-                } else {
-                    State.users[username] = password;
-                    localStorage.setItem('mc_users', JSON.stringify(State.users));
-                    localStorage.setItem('currentUser', username);
-                    showAuthSuccess(username, 'Đăng ký thành công!');
-                }
-            }
+            performLogin();
         });
 
-        function showAuthSuccess(username, message) {
-            Dom.authForm.classList.add('hidden');
-            Dom.authSuccessView.classList.remove('hidden');
-            document.getElementById('auth-success-msg').innerText = message;
-            Dom.authDisplayName.innerText = username;
-            updateUIForLoggedIn(username);
-        }
+        Dom.logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('logged_in');
+            State.isLoggedIn = false;
+            updateUI();
+        });
 
-        Dom.logoutBtn.addEventListener('click', updateUIForLoggedOut);
-
+        // Menu Event Listeners
         Dom.openMenuBtn.addEventListener('click', openMenu);
         Dom.closeMenuBtn.addEventListener('click', closeMenu);
         Dom.mobileMenuBackdrop.addEventListener('click', closeMenu);
@@ -627,24 +609,12 @@
             link.addEventListener('click', closeMenu);
         });
 
+        // Download Modal Listeners
         Dom.mainDownloadBtn.addEventListener('click', () => {
             Dom.downloadModal.classList.remove('hidden');
-            Dom.modalActionContainer.innerHTML = `
-                <div class="space-y-6" id="os-selection-view">
-                    <p class="font-body-md text-on-surface-variant">Chọn hệ điều hành của bạn để bắt đầu tải bản cập nhật Hang Lưu Huỳnh:</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" onclick="startOSDownload('WINDOWS')">
-                            <span class="material-symbols-outlined text-3xl">desktop_windows</span>WINDOWS (.exe)
-                        </button>
-                        <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" onclick="startOSDownload('MACOS')">
-                            <span class="material-symbols-outlined text-3xl">desktop_mac</span>MACOS (.pkg)
-                        </button>
-                    </div>
-                </div>
-            `;
+            document.body.style.overflow = 'hidden';
             Dom.modalActionContainer.classList.remove('hidden');
             Dom.downloadProgressContainer.classList.add('hidden');
-            document.body.style.overflow = 'hidden';
         });
 
         Dom.closeDownloadModalBtn.addEventListener('click', () => {
@@ -652,11 +622,10 @@
             document.body.style.overflow = '';
         });
 
-        const savedUser = localStorage.getItem('currentUser');
-        if (savedUser) {
-            updateUIForLoggedIn(savedUser);
-        }
+        Dom.dlWinBtn.addEventListener('click', () => startOSDownload('WINDOWS'));
+        Dom.dlMacBtn.addEventListener('click', () => startOSDownload('MACOS'));
 
+        updateUI();
         initVisuals();
     }
 
