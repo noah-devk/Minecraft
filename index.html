@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-
-<html class="dark" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html class="dark" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Minecraft: Khám Phá Hang Lưu Huỳnh</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -156,21 +154,59 @@
             pointer-events: none;
             mix-blend-mode: screen;
         }
+        /* Mobile Menu Transitions */
+        .mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .mobile-menu-content {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black">
+<body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black" id="top">
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay invisible opacity-0 fixed inset-0 z-[100] flex justify-end" id="mobile-menu">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
+<div class="mobile-menu-content translate-x-full relative w-full max-w-[300px] h-full bg-surface-container-high border-l border-outline-variant shadow-2xl flex flex-col p-gutter pixel-texture" id="mobile-menu-drawer">
+<div class="flex justify-between items-center mb-10">
+<span class="font-display-lg text-2xl text-xp-green tracking-tighter uppercase font-bold">MENU</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors" id="close-menu">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-6">
+<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#top">
+<span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
+                Trang chủ
+            </a>
+<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#update-section">
+<span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
+                Bản cập nhật
+            </a>
+<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#newsletter-section">
+<span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
+                Nhận thông báo
+            </a>
+</nav>
+<div class="mt-auto pt-8 border-t border-outline-variant">
+<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-4 beveled-edge uppercase">
+                ĐĂNG NHẬP
+            </button>
+</div>
+</div>
+</div>
 <!-- Top AppBar -->
 <header class="w-full top-0 sticky backdrop-blur-xl border-b border-outline-variant shadow-[4px_4px_0px_rgba(0,0,0,0.3)] bg-deep-forest/90 z-50">
 <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
 <div class="flex items-center gap-4">
-<button class="text-primary active:translate-x-[2px] active:translate-y-[2px] transition-transform">
+<button class="text-primary active:translate-x-[2px] active:translate-y-[2px] transition-transform" id="open-menu">
 <span class="material-symbols-outlined text-2xl">menu</span>
 </button>
 <h1 class="font-display-lg text-display-lg uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
 </div>
 <button class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">
-                ĐĂNG NHẬP
-            </button>
+            ĐĂNG NHẬP
+        </button>
 </div>
 </header>
 <main>
@@ -178,26 +214,23 @@
 <section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-margin-mobile overflow-hidden">
 <!-- Full Bleed Background -->
 <div class="absolute inset-0 z-0 overflow-hidden">
-<img alt="Minecraft Sulfur Cave landscape with glowing crystals and toxic steam" class="w-full h-full object-cover animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd"/>
-<canvas class="absolute inset-0 w-full h-full opacity-60" id="toxic-mist-canvas"></canvas>
+<img alt="Minecraft Sulfur Cave landscape with glowing crystals and toxic steam" class="w-full h-full object-cover animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd">
+<canvas class="absolute inset-0 w-full h-full opacity-60" id="toxic-mist-canvas" width="390" height="795"></canvas>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 </div>
 <!-- Hero Content -->
 <div class="relative z-10 max-w-3xl flex flex-col items-center gap-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
 <div class="inline-block px-4 py-1 bg-xp-green text-on-primary-container font-label-caps text-label-caps uppercase rounded-sm mb-4">
-                    Phiên Bản Mới: Hang Lưu Huỳnh
-                </div>
+                Phiên Bản Mới: Hang Lưu Huỳnh
+            </div>
 <h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg uppercase tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                    MINECRAFT: KHÁM PHÁ HANG LƯU HUỲNH
-                </h2>
+                MINECRAFT: KHÁM PHÁ HANG LƯU HUỲNH
+            </h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                    Dấn thân vào những hang động độc hại chứa đầy tinh thể vàng huyền bí. Một thế giới ngầm nguy hiểm đang chờ đợi bạn.
-                </p>
+                Dấn thân vào những hang động độc hại chứa đầy tinh thể vàng huyền bí. Một thế giới ngầm nguy hiểm đang chờ đợi bạn.
+            </p>
 <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-<button class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" id="trigger-download-modal">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
-    📥 TẢI MINECRAFT MIỄN PHÍ
-</button>
+<button class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" id="trigger-download-modal"><span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">download</span> TẢI MINECRAFT MIỄN PHÍ</button>
 </div>
 <!-- XP Bar Decorative Element -->
 <div class="w-64 h-3 bg-surface-container-highest border border-outline/30 mt-12 relative overflow-hidden">
@@ -207,7 +240,7 @@
 </div>
 </section>
 <!-- Content Section: Sulfur Cave Update -->
-<section class="py-section-gap px-margin-mobile max-w-container-max mx-auto">
+<section class="py-section-gap px-margin-mobile max-w-container-max mx-auto scroll-mt-24" id="update-section">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 <!-- Main Feature Card -->
 <div class="lg:col-span-8 glass-card beveled-edge p-8 md:p-12 animate-float-subtle">
@@ -217,15 +250,15 @@
 </div>
 <h3 class="font-headline-md text-headline-md mb-6 text-primary">The Sulfur Cave Update</h3>
 <div class="space-y-6 font-body-lg text-body-lg text-on-surface-variant">
-<p>
-                            Bản cập nhật <span class="text-secondary font-bold italic">"Hang Lưu Huỳnh"</span> giới thiệu một hệ sinh thái ngầm hoàn toàn mới. Khám phá những cấu trúc hang động độc đáo, nơi các **Tinh thể Lưu huỳnh** phát sáng rực rỡ nhưng ẩn chứa đầy rẫy hiểm nguy.
-                        </p>
-<p>
-                            Hãy cẩn trọng với những **Hồ Axit** độc hại và làn hơi lưu huỳnh bốc lên từ lòng đất. Để sống sót, người chơi cần chế tạo các bộ đồ bảo hộ mới và sử dụng các khối tinh thể để khai thác năng lượng hóa học chưa từng thấy.
-                        </p>
+<p class="">
+                        Bản cập nhật <span class="text-secondary font-bold italic">"Hang Lưu Huỳnh"</span> giới thiệu một hệ sinh thái ngầm hoàn toàn mới. Khám phá những cấu trúc hang động độc đáo, nơi các **Tinh thể Lưu huỳnh** phát sáng rực rỡ nhưng ẩn chứa đầy rẫy hiểm nguy.
+                    </p>
+<p class="">
+                        Hãy cẩn trọng với những **Hồ Axit** độc hại và làn hơi lưu huỳnh bốc lên từ lòng đất. Để sống sót, người chơi cần chế tạo các bộ đồ bảo hộ mới và sử dụng các khối tinh thể để khai thác năng lượng hóa học chưa từng thấy.
+                    </p>
 <div class="bg-surface-container-high/50 p-6 rounded-lg border-l-4 border-xp-green italic">
-                            "Bóng tối không còn là nỗi sợ duy nhất. Làn khói vàng và những hồ axit sẽ thử thách bản năng sinh tồn của bạn."
-                        </div>
+                        "Bóng tối không còn là nỗi sợ duy nhất. Làn khói vàng và những hồ axit sẽ thử thách bản năng sinh tồn của bạn."
+                    </div>
 </div>
 </div>
 <!-- Info Sidebar -->
@@ -246,7 +279,7 @@
 <span class="text-on-surface-variant">Trạng thái:</span>
 <span class="font-bold text-primary-fixed flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">verified</span> Đã xác minh
-                                </span>
+                            </span>
 </li>
 </ul>
 </div>
@@ -257,8 +290,8 @@
 <h4 class="font-label-caps text-label-caps uppercase">Nguồn &amp; Tín Nhiệm</h4>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Nội dung và hình ảnh được tổng hợp từ các nền tảng sáng tạo. Cảm ơn cộng đồng đã chia sẻ những ý tưởng tuyệt vời về phiên bản Hang Lưu Huỳnh huyền bí này.
-                        </p>
+                        Nội dung và hình ảnh được tổng hợp từ các nền tảng sáng tạo. Cảm ơn cộng đồng đã chia sẻ những ý tưởng tuyệt vời về phiên bản Hang Lưu Huỳnh huyền bí này.
+                    </p>
 <div class="mt-6 pt-4 border-t border-white/5 flex gap-4">
 <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/50">
 <span class="material-symbols-outlined">video_library</span>
@@ -272,18 +305,18 @@
 </div>
 </section>
 <!-- Newsletter / CTA -->
-<section class="py-section-gap px-margin-mobile bg-surface-container-lowest border-y border-outline-variant">
+<section class="py-section-gap px-margin-mobile bg-surface-container-lowest border-y border-outline-variant scroll-mt-24" id="newsletter-section">
 <div class="max-w-container-max mx-auto text-center flex flex-col items-center gap-6">
 <span class="material-symbols-outlined text-xp-green text-5xl">cloud_download</span>
 <h3 class="font-headline-md text-headline-md">Sẵn sàng dấn thân vào hang tối?</h3>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                    Đừng bỏ lỡ cơ hội trải nghiệm sớm nhất bản cập nhật Hang Lưu Huỳnh. Tải về ngay hôm nay và chinh phục thử thách mới.
-                </p>
+                Đừng bỏ lỡ cơ hội trải nghiệm sớm nhất bản cập nhật Hang Lưu Huỳnh. Tải về ngay hôm nay và chinh phục thử thách mới.
+            </p>
 <form class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-4">
-<input class="flex-grow bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="Nhập email nhận tin tức..." type="email"/>
+<input class="flex-grow bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="Nhập email nhận tin tức..." type="email">
 <button class="bg-secondary-container text-on-secondary-container px-8 py-3 font-button-text text-button-text uppercase active:scale-95 transition-transform">
-                        Đăng Ký
-                    </button>
+                    Đăng Ký
+                </button>
 </form>
 </div>
 </section>
@@ -294,8 +327,8 @@
 <div class="flex flex-col items-center md:items-start gap-2">
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT HANG LƯU HUỲNH</span>
 <p class="font-body-md text-body-md text-secondary opacity-70">
-                    © 2024 Mojang AB. TM Microsoft Corporation.
-                </p>
+                © 2024 Mojang AB. TM Microsoft Corporation.
+            </p>
 </div>
 <nav class="flex flex-wrap justify-center gap-6">
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">EULA</a>
@@ -309,134 +342,162 @@
 </div>
 </div>
 </footer>
+<!-- Download Modal Overlay -->
+<div class="hidden fixed inset-0 z-[110] flex items-center justify-center p-gutter" id="download-modal">
+<div class="absolute inset-0 bg-background/90 backdrop-blur-md"></div>
+<div class="relative bg-surface-container-high border border-outline-variant p-8 w-full max-w-md beveled-edge pixel-texture">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-primary uppercase text-xl">TRÌNH TẢI MINECRAFT</h3>
+<button class="text-outline hover:text-white" id="close-modal"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="space-y-6" id="modal-action-container"><p class="font-body-md text-on-surface-variant">Bạn sắp tải xuống bản cập nhật Hang Lưu Huỳnh (Sulfur Cave Update). Bạn có muốn tiếp tục?</p><button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" id="start-download-btn">BẮT ĐẦU TẢI</button></div>
+<div class="hidden space-y-4" id="download-progress-container"><div class="flex justify-between items-end font-label-caps text-xs text-xp-green"><span id="download-status-text" class="">DOWNLOADING... 0%</span><span class="">FILE: sulfur_cave_v1.0.mc</span></div><div class="w-full h-4 bg-surface-container-lowest border border-outline/20"><div class="h-full bg-xp-green w-0 shadow-[0_0_10px_rgba(198,255,0,0.4)]" id="download-progress-bar"></div></div></div>
+</div>
+</div>
 <script>
-        // WebGL Shader Implementation for Toxic Mist
-        const canvas = document.getElementById('toxic-mist-canvas');
-        if (canvas) {
-            const gl = canvas.getContext('webgl');
-            if (gl) {
-                const vsSource = `
-                    attribute vec4 a_position;
-                    varying vec2 v_texCoord;
-                    void main() {
-                        gl_Position = a_position;
-                        v_texCoord = (a_position.xy + 1.0) / 2.0;
-                    }
-                `;
-                const fsSource = `
-                    precision highp float;
-                    varying vec2 v_texCoord;
-                    uniform float u_time;
-                    uniform vec2 u_resolution;
+    // --- Mobile Menu Logic ---
+    (function() {
+        const menuOverlay = document.getElementById('mobile-menu');
+        const menuDrawer = document.getElementById('mobile-menu-drawer');
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
 
-                    float noise(vec2 p) {
-                        return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
-                    }
+        function openMenu() {
+            menuOverlay.classList.remove('invisible', 'opacity-0');
+            menuOverlay.classList.add('visible', 'opacity-100');
+            menuDrawer.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
 
-                    float smoothNoise(vec2 p) {
-                        vec2 i = floor(p);
-                        vec2 f = fract(p);
-                        f = f * f * (3.0 - 2.0 * f);
-                        float a = noise(i);
-                        float b = noise(i + vec2(1.0, 0.0));
-                        float c = noise(i + vec2(0.0, 1.0));
-                        float d = noise(i + vec2(1.0, 1.0));
-                        return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
-                    }
+        function closeMenu() {
+            menuOverlay.classList.remove('opacity-100');
+            menuOverlay.classList.add('opacity-0');
+            menuDrawer.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                menuOverlay.classList.remove('visible');
+                menuOverlay.classList.add('invisible');
+            }, 300);
+        }
 
-                    float fbm(vec2 p) {
-                        float v = 0.0;
-                        float a = 0.5;
-                        for (int i = 0; i < 5; i++) {
-                            v += a * smoothNoise(p);
-                            p *= 2.0;
-                            a *= 0.5;
-                        }
-                        return v;
-                    }
+        openBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        backdrop.addEventListener('click', closeMenu);
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+    })();
 
-                    void main() {
-                        vec2 uv = v_texCoord;
-                        vec2 p = uv * 3.0;
-                        
-                        // Tạo chuyển động khói lững lờ
-                        float n = fbm(p + vec2(u_time * 0.1, u_time * 0.05));
-                        
-                        // Màu vàng lưu huỳnh đặc trưng (toxic yellow-green)
-                        vec3 sulfurColor = vec3(0.8, 0.9, 0.1);
-                        vec3 deepCaveColor = vec3(0.05, 0.06, 0.04);
-                        
-                        // Hiệu ứng hạt ánh sáng (sparkles)
-                        float sparkle = pow(noise(uv * 10.0 + u_time * 0.5), 20.0);
-                        
-                        vec3 finalColor = mix(deepCaveColor, sulfurColor, n * 0.4);
-                        finalColor += sulfurColor * sparkle * 0.5;
-                        
-                        gl_FragColor = vec4(finalColor, 0.3); // Độ trong suốt để lồng vào nền
-                    }
-                `;
+    // --- WebGL Shader Implementation for Toxic Mist ---
+    const canvas = document.getElementById('toxic-mist-canvas');
+    if (canvas) {
+        const gl = canvas.getContext('webgl');
+        if (gl) {
+            const vsSource = `
+                attribute vec4 a_position;
+                varying vec2 v_texCoord;
+                void main() {
+                    gl_Position = a_position;
+                    v_texCoord = (a_position.xy + 1.0) / 2.0;
+                }
+            `;
+            const fsSource = `
+                precision highp float;
+                varying vec2 v_texCoord;
+                uniform float u_time;
+                uniform vec2 u_resolution;
 
-                function createShader(gl, type, source) {
-                    const shader = gl.createShader(type);
-                    gl.shaderSource(shader, source);
-                    gl.compileShader(shader);
-                    return shader;
+                float noise(vec2 p) {
+                    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
                 }
 
-                const program = gl.createProgram();
-                gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
-                gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
-                gl.linkProgram(program);
+                float smoothNoise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    f = f * f * (3.0 - 2.0 * f);
+                    float a = noise(i);
+                    float b = noise(i + vec2(1.0, 0.0));
+                    float c = noise(i + vec2(0.0, 1.0));
+                    float d = noise(i + vec2(1.0, 1.0));
+                    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+                }
 
-                const positionBuffer = gl.createBuffer();
+                float fbm(vec2 p) {
+                    float v = 0.0;
+                    float a = 0.5;
+                    for (int i = 0; i < 5; i++) {
+                        v += a * smoothNoise(p);
+                        p *= 2.0;
+                        a *= 0.5;
+                    }
+                    return v;
+                }
+
+                void main() {
+                    vec2 uv = v_texCoord;
+                    vec2 p = uv * 3.0;
+                    float n = fbm(p + vec2(u_time * 0.1, u_time * 0.05));
+                    vec3 sulfurColor = vec3(0.8, 0.9, 0.1);
+                    vec3 deepCaveColor = vec3(0.05, 0.06, 0.04);
+                    float sparkle = pow(noise(uv * 10.0 + u_time * 0.5), 20.0);
+                    vec3 finalColor = mix(deepCaveColor, sulfurColor, n * 0.4);
+                    finalColor += sulfurColor * sparkle * 0.5;
+                    gl_FragColor = vec4(finalColor, 0.3);
+                }
+            `;
+
+            function createShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            }
+
+            const program = gl.createProgram();
+            gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
+            gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+            gl.linkProgram(program);
+
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
+            const positionLocation = gl.getAttribLocation(program, 'a_position');
+            const timeLocation = gl.getUniformLocation(program, 'u_time');
+            const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+
+            function render(time) {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                gl.useProgram(program);
+                gl.enableVertexAttribArray(positionLocation);
                 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-
-                const positionLocation = gl.getAttribLocation(program, 'a_position');
-                const timeLocation = gl.getUniformLocation(program, 'u_time');
-                const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
-
-                function render(time) {
-                    canvas.width = canvas.clientWidth;
-                    canvas.height = canvas.clientHeight;
-                    gl.viewport(0, 0, canvas.width, canvas.height);
-                    gl.useProgram(program);
-                    gl.enableVertexAttribArray(positionLocation);
-                    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-                    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-                    gl.uniform1f(timeLocation, time * 0.001);
-                    gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
-                    gl.drawArrays(gl.TRIANGLES, 0, 6);
-                    requestAnimationFrame(render);
-                }
+                gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+                gl.uniform1f(timeLocation, time * 0.001);
+                gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
                 requestAnimationFrame(render);
             }
+            requestAnimationFrame(render);
         }
+    }
 
-        // Parallax effect for hero (refined)
-        window.addEventListener('scroll', () => {
-            const scroll = window.pageYOffset;
-            const heroImg = document.querySelector('section img');
-            if (heroImg) {
-                // Combine Ken Burns with slight parallax
-                heroImg.style.marginTop = `${scroll * 0.2}px`;
-            }
-        });
-
-        // Interaction logic for download button
-        const downloadBtn = document.querySelector('.btn-download-animated');
-        if (downloadBtn) {
-            downloadBtn.addEventListener('mouseenter', () => {
-                const icon = downloadBtn.querySelector('.material-symbols-outlined');
-                if (icon) icon.style.transform = 'translateY(2px)';
-            });
-            downloadBtn.addEventListener('mouseleave', () => {
-                const icon = downloadBtn.querySelector('.material-symbols-outlined');
-                if (icon) icon.style.transform = 'translateY(0)';
-            });
+    // --- Parallax Effect ---
+    window.addEventListener('scroll', () => {
+        const scroll = window.pageYOffset;
+        const heroImg = document.querySelector('section img');
+        if (heroImg) {
+            heroImg.style.marginTop = `${scroll * 0.2}px`;
         }
-    </script>
-<script>
+    });
+
+    // --- Download Modal Interaction Logic ---
     (function() {
         const modal = document.getElementById('download-modal');
         const trigger = document.getElementById('trigger-download-modal');
@@ -460,7 +521,7 @@
             progressContainer.classList.remove('hidden');
             
             let progress = 0;
-            const duration = 5000; // 5 seconds
+            const duration = 5000;
             const interval = 50;
             const step = (interval / duration) * 100;
 
@@ -488,14 +549,15 @@
             document.getElementById('finish-download-btn').addEventListener('click', () => {
                 window.open('https://youtu.be/dQw4w9WgXcQ', '_blank');
                 modal.classList.add('hidden');
-                // Reset for next time
                 setTimeout(() => {
                     actionContainer.innerHTML = `<button id="start-download-btn" class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">BẮT ĐẦU TẢI</button>`;
                     progressBar.style.width = '0%';
                     statusText.innerText = 'DOWNLOADING... 0%';
-                    // Re-attach listener would be needed here if we wanted it to be repeatable without refresh
                 }, 500);
             });
         }
     })();
-</script></body></html>
+</script>
+
+
+</body></html>
