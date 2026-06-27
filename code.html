@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minecraft 1.21: Trải Nghiệm Miễn Phí</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#a6f5a8",
+                        "surface-container": "#1c211b",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "tertiary": "#ffb1c4",
+                        "outline": "#8a9387",
+                        "tertiary-container": "#d6718f",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-primary-fixed": "#002107",
+                        "primary-fixed-dim": "#8ad88e",
+                        "background": "#101510",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2d322c",
+                        "surface-container-highest": "#313630",
+                        "surface-bright": "#363a34",
+                        "dirt-darker": "#4D342C",
+                        "secondary": "#ebbcac",
+                        "inverse-primary": "#1f6c2f",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00320d",
+                        "surface-container-low": "#181d18",
+                        "primary-container": "#55a15d",
+                        "on-primary-fixed-variant": "#00531b",
+                        "on-tertiary-fixed": "#3f001a",
+                        "xp-green": "#C6FF00",
+                        "on-error": "#690005",
+                        "deep-forest": "#1B3022",
+                        "surface-charcoal": "#121212",
+                        "on-secondary": "#46291e",
+                        "grass-vibrant": "#54B061",
+                        "surface-container-lowest": "#0b0f0b",
+                        "surface-tint": "#8ad88e",
+                        "surface": "#101510",
+                        "outline-variant": "#40493f",
+                        "on-secondary-fixed": "#2e150b",
+                        "surface-variant": "#313630",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#272b26",
+                        "surface-dim": "#101510",
+                        "secondary-container": "#603f33",
+                        "on-secondary-container": "#d8ab9b",
+                        "on-primary": "#003911",
+                        "on-surface": "#e0e4db",
+                        "inverse-surface": "#e0e4db",
+                        "on-tertiary": "#5e112f",
+                        "on-tertiary-container": "#550828",
+                        "tertiary-fixed": "#ffd9e1",
+                        "primary": "#8ad88e",
+                        "tertiary-fixed-dim": "#ffb1c4",
+                        "on-background": "#e0e4db",
+                        "on-tertiary-fixed-variant": "#7b2945",
+                        "on-surface-variant": "#bfc9bb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "button-text": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                        "button-text": ["16px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-caps": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    },
+                    "animation": {
+                        "glow-pulse": "glow-pulse 3s infinite ease-in-out",
+                        "shake": "shake 0.5s ease-in-out infinite"
+                    },
+                    "keyframes": {
+                        "glow-pulse": {
+                            "0%, 100%": { "box-shadow": "inset 2px 2px 0px rgba(255, 255, 255, 0.05), 4px 4px 0px rgba(0, 0, 0, 0.3), 0 0 5px rgba(138, 216, 142, 0.2)" },
+                            "50%": { "box-shadow": "inset 2px 2px 0px rgba(255, 255, 255, 0.05), 4px 4px 0px rgba(0, 0, 0, 0.3), 0 0 20px rgba(138, 216, 142, 0.6)" }
+                        },
+                        "shake": {
+                            "0%, 100%": { "transform": "translate(0, 0) rotate(0deg)" },
+                            "25%": { "transform": "translate(-1px, 1px) rotate(-0.5deg)" },
+                            "50%": { "transform": "translate(1px, -1px) rotate(0.5deg)" },
+                            "75%": { "transform": "translate(-1px, -1px) rotate(-0.5deg)" }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pixel-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        .beveled-edge {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.05), 4px 4px 0px rgba(0, 0, 0, 0.3);
+        }
+        .glass-card {
+            background: rgba(28, 33, 27, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        /* Custom Download Button Styles */
+        .btn-download-animated {
+            animation: glow-pulse 3s infinite ease-in-out;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-download-animated:hover, .btn-download-animated:active {
+            animation: shake 0.4s ease-in-out infinite, glow-pulse 1s infinite ease-in-out;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black">
+<!-- Top AppBar -->
+<header class="w-full top-0 sticky backdrop-blur-xl border-b border-outline-variant shadow-[4px_4px_0px_rgba(0,0,0,0.3)] bg-deep-forest/90 z-50">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-4">
+<button class="text-primary active:translate-x-[2px] active:translate-y-[2px] transition-transform">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
+</div>
+<button class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">
+            LOG IN
+        </button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-margin-mobile overflow-hidden">
+<!-- Full Bleed Background -->
+<div class="absolute inset-0 z-0">
+<img alt="Minecraft 1.21 Tricky Trials landscape with sunset over blocky mountains and lush forests" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZbUwefbVtQC-dT_XqX98FfP2g35DdQWecY9S0K9j1u6co_Gu16t-3t7EIf1qFUQB22m21AonPtT1XnkzmsoEs2fImlXB_7x7yzXfEbPjlXi7gzIVFA6KrOXvFX4D-FdP0AqHxsXImUPgyn2b-tp8ZFt88jaLTYOqmXuSR2F39C7DF8sqlZsVPinV-lxUJgvFjVjKIfs9tGWgzQq2y_FdG7rg3oK-vkqNS9Th1aH3Jlrm4RoFrPB8yVA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-3xl flex flex-col items-center gap-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
+<div class="inline-block px-4 py-1 bg-xp-green text-on-primary-container font-label-caps text-label-caps uppercase rounded-sm mb-4">
+                Phiên Bản 1.21 Trình Làng
+            </div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg uppercase tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                Minecraft 1.21: Trải Nghiệm Miễn Phí
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Tải ngay phiên bản mới nhất với đầy đủ tính năng. An toàn, hợp lệ và được xác nhận.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+<a class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" href="https://youtu.be/dQw4w9WgXcQ?si=bwGcGFQqYL4PRQtq" target="_blank">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
+                    📥 TẢI MINECRAFT 1.21 MIỄN PHÍ
+                </a>
+</div>
+<!-- XP Bar Decorative Element -->
+<div class="w-64 h-3 bg-surface-container-highest border border-outline/30 mt-12 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-xp-green w-3/4 shadow-[0_0_15px_rgba(198,255,0,0.6)]"></div>
+<div class="absolute inset-0 flex items-center justify-center text-[8px] font-label-caps text-white pointer-events-none">LOADING ASSETS... 75%</div>
+</div>
+</div>
+</section>
+<!-- Content Section: Tricky Trials -->
+<section class="py-section-gap px-margin-mobile max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Feature Card -->
+<div class="lg:col-span-8 glass-card beveled-edge p-8 md:p-12">
+<div class="flex items-center gap-3 text-xp-green mb-6">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-caps text-label-caps uppercase">Bản cập nhật lớn nhất năm</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-6 text-primary">The Tricky Trials Update</h3>
+<div class="space-y-6 font-body-lg text-body-lg text-on-surface-variant">
+<p>
+                        Bản cập nhật Minecraft 1.21 mang tên <span class="text-secondary font-bold italic">"Tricky Trials"</span> chính thức mang đến những thử thách mới đầy kịch tính cho cộng đồng game thủ. Điểm nhấn là các **Trial Chambers** — những công trình ngầm rộng lớn chứa đầy cạm bẫy và phần thưởng quý giá.
+                    </p>
+<p>
+                        Gặp gỡ **The Breeze**, sinh vật linh hoạt điều khiển gió, và khám phá khối **Crafter** mới giúp tự động hóa quá trình chế tạo vật phẩm. Đây là bước tiến lớn cho cả người chơi phiêu lưu và những kỹ sư Redstone tài năng.
+                    </p>
+<div class="bg-surface-container-high/50 p-6 rounded-lg border-l-4 border-xp-green italic">
+                        "Một kỷ nguyên mới của sự sáng tạo và chiến đấu đã bắt đầu. Bạn đã sẵn sàng để vượt qua các thử thách chưa?"
+                    </div>
+</div>
+</div>
+<!-- Info Sidebar -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Tech Specs Card -->
+<div class="bg-dirt-darker beveled-edge p-6">
+<h4 class="font-label-caps text-label-caps uppercase text-secondary mb-4 border-b border-white/10 pb-2">Thông Số Kỹ Thuật</h4>
+<ul class="space-y-4 font-body-md text-body-md">
+<li class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-on-surface-variant">Phiên bản:</span>
+<span class="font-bold text-xp-green">1.21 (Tricky Trials)</span>
+</li>
+<li class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-on-surface-variant">Dung lượng:</span>
+<span class="font-bold text-white">~450 MB</span>
+</li>
+<li class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-on-surface-variant">Trạng thái:</span>
+<span class="font-bold text-primary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> Đã xác minh
+                            </span>
+</li>
+</ul>
+</div>
+<!-- Credits Card -->
+<div class="bg-surface-container-highest beveled-edge p-6 flex-grow">
+<div class="flex items-center gap-2 mb-4 text-tertiary">
+<span class="material-symbols-outlined">share</span>
+<h4 class="font-label-caps text-label-caps uppercase">Nguồn &amp; Tín Nhiệm</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Nội dung và hình ảnh được tổng hợp từ các nền tảng **YouTube** và **TikTok**. Chúng tôi xin gửi lời cảm ơn chân thành đến cộng đồng sáng tạo nội dung đã cung cấp những hình ảnh chân thực nhất về bản cập nhật này.
+                    </p>
+<div class="mt-6 pt-4 border-t border-white/5 flex gap-4">
+<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/50">
+<span class="material-symbols-outlined">video_library</span>
+</div>
+<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/50">
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-section-gap px-margin-mobile bg-surface-container-lowest border-y border-outline-variant">
+<div class="max-w-container-max mx-auto text-center flex flex-col items-center gap-6">
+<span class="material-symbols-outlined text-xp-green text-5xl">cloud_download</span>
+<h3 class="font-headline-md text-headline-md">Sẵn sàng dấn thân vào cuộc phiêu lưu?</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Đừng bỏ lỡ cơ hội trải nghiệm sớm nhất bản cập nhật 1.21. Tải về ngay hôm nay và bắt đầu xây dựng thế giới của riêng bạn.
+            </p>
+<form class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-4">
+<input class="flex-grow bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="Nhập email nhận tin tức..." type="email"/>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-3 font-button-text text-button-text uppercase active:scale-95 transition-transform">
+                    Đăng Ký
+                </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker dark:bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT 1.21</span>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-70">
+                © 2024 Mojang AB. TM Microsoft Corporation.
+            </p>
+</div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">EULA</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Brand Guidelines</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Contact</a>
+</nav>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-xp-green transition-colors">public</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-xp-green transition-colors">shield</span>
+</div>
+</div>
+</footer>
+<script>
+    // Parallax effect for hero
+    window.addEventListener('scroll', () => {
+        const scroll = window.pageYOffset;
+        const heroImg = document.querySelector('section img');
+        if (heroImg) {
+            heroImg.style.transform = `translateY(${scroll * 0.4}px)`;
+        }
+    });
+
+    // Simple interaction logic for download button icons
+    const downloadBtn = document.querySelector('.btn-download-animated');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('mouseenter', () => {
+            const icon = downloadBtn.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.transform = 'translateY(2px)';
+        });
+        downloadBtn.addEventListener('mouseleave', () => {
+            const icon = downloadBtn.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.transform = 'translateY(0)';
+        });
+    }
+</script>
+</body></html>
