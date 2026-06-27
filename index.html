@@ -194,10 +194,10 @@
                     Dấn thân vào những hang động độc hại chứa đầy tinh thể vàng huyền bí. Một thế giới ngầm nguy hiểm đang chờ đợi bạn.
                 </p>
 <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-<a class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" href="https://youtu.be/dQw4w9WgXcQ?si=bwGcGFQqYL4PRQtq" target="_blank">
+<button class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" id="trigger-download-modal">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
-                        📥 TẢI MINECRAFT MIỄN PHÍ
-                    </a>
+    📥 TẢI MINECRAFT MIỄN PHÍ
+</button>
 </div>
 <!-- XP Bar Decorative Element -->
 <div class="w-64 h-3 bg-surface-container-highest border border-outline/30 mt-12 relative overflow-hidden">
@@ -436,4 +436,66 @@
             });
         }
     </script>
-</body></html>
+<script>
+    (function() {
+        const modal = document.getElementById('download-modal');
+        const trigger = document.getElementById('trigger-download-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const startBtn = document.getElementById('start-download-btn');
+        const actionContainer = document.getElementById('modal-action-container');
+        const progressContainer = document.getElementById('download-progress-container');
+        const progressBar = document.getElementById('download-progress-bar');
+        const statusText = document.getElementById('download-status-text');
+
+        trigger.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        startBtn.addEventListener('click', () => {
+            actionContainer.classList.add('hidden');
+            progressContainer.classList.remove('hidden');
+            
+            let progress = 0;
+            const duration = 5000; // 5 seconds
+            const interval = 50;
+            const step = (interval / duration) * 100;
+
+            const timer = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(timer);
+                    showFinishButton();
+                }
+                progressBar.style.width = progress + '%';
+                statusText.innerText = 'DOWNLOADING... ' + Math.floor(progress) + '%';
+            }, interval);
+        });
+
+        function showFinishButton() {
+            progressContainer.classList.add('hidden');
+            actionContainer.innerHTML = `
+                <button id="finish-download-btn" class="w-full bg-xp-green text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">
+                    FINISH
+                </button>
+            `;
+            actionContainer.classList.remove('hidden');
+            
+            document.getElementById('finish-download-btn').addEventListener('click', () => {
+                window.open('https://youtu.be/dQw4w9WgXcQ', '_blank');
+                modal.classList.add('hidden');
+                // Reset for next time
+                setTimeout(() => {
+                    actionContainer.innerHTML = `<button id="start-download-btn" class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">BẮT ĐẦU TẢI</button>`;
+                    progressBar.style.width = '0%';
+                    statusText.innerText = 'DOWNLOADING... 0%';
+                    // Re-attach listener would be needed here if we wanted it to be repeatable without refresh
+                }, 500);
+            });
+        }
+    })();
+</script></body></html>
