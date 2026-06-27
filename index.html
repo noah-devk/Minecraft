@@ -3,11 +3,9 @@
 <html class="dark" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Minecraft 1.21: Trải Nghiệm Miễn Phí</title>
+<title>Minecraft: Khám Phá Hang Lưu Huỳnh</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -100,7 +98,10 @@
                     },
                     "animation": {
                         "glow-pulse": "glow-pulse 3s infinite ease-in-out",
-                        "shake": "shake 0.5s ease-in-out infinite"
+                        "shake": "shake 0.5s ease-in-out infinite",
+                        "ken-burns": "ken-burns 20s infinite ease-in-out",
+                        "float-subtle": "float-subtle 6s infinite ease-in-out",
+                        "float-delayed": "float-subtle 8s infinite ease-in-out 1s"
                     },
                     "keyframes": {
                         "glow-pulse": {
@@ -112,6 +113,14 @@
                             "25%": { "transform": "translate(-1px, 1px) rotate(-0.5deg)" },
                             "50%": { "transform": "translate(1px, -1px) rotate(0.5deg)" },
                             "75%": { "transform": "translate(-1px, -1px) rotate(-0.5deg)" }
+                        },
+                        "ken-burns": {
+                            "0%, 100%": { "transform": "scale(1.0)" },
+                            "50%": { "transform": "scale(1.1)" }
+                        },
+                        "float-subtle": {
+                            "0%, 100%": { "transform": "translateY(0)" },
+                            "50%": { "transform": "translateY(-10px)" }
                         }
                     }
                 },
@@ -134,7 +143,6 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
         }
-        /* Custom Download Button Styles */
         .btn-download-animated {
             animation: glow-pulse 3s infinite ease-in-out;
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -143,6 +151,10 @@
             animation: shake 0.4s ease-in-out infinite, glow-pulse 1s infinite ease-in-out;
             transform: scale(1.05);
             filter: brightness(1.1);
+        }
+        #toxic-mist-canvas {
+            pointer-events: none;
+            mix-blend-mode: screen;
         }
     </style>
 </head>
@@ -157,95 +169,96 @@
 <h1 class="font-display-lg text-display-lg uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
 </div>
 <button class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">
-            LOG IN
-        </button>
+                ĐĂNG NHẬP
+            </button>
 </div>
 </header>
 <main>
 <!-- Hero Section -->
 <section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-margin-mobile overflow-hidden">
 <!-- Full Bleed Background -->
-<div class="absolute inset-0 z-0">
-<img alt="Minecraft 1.21 Tricky Trials landscape with sunset over blocky mountains and lush forests" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZbUwefbVtQC-dT_XqX98FfP2g35DdQWecY9S0K9j1u6co_Gu16t-3t7EIf1qFUQB22m21AonPtT1XnkzmsoEs2fImlXB_7x7yzXfEbPjlXi7gzIVFA6KrOXvFX4D-FdP0AqHxsXImUPgyn2b-tp8ZFt88jaLTYOqmXuSR2F39C7DF8sqlZsVPinV-lxUJgvFjVjKIfs9tGWgzQq2y_FdG7rg3oK-vkqNS9Th1aH3Jlrm4RoFrPB8yVA"/>
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img alt="Minecraft Sulfur Cave landscape with glowing crystals and toxic steam" class="w-full h-full object-cover animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd"/>
+<canvas class="absolute inset-0 w-full h-full opacity-60" id="toxic-mist-canvas"></canvas>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 </div>
 <!-- Hero Content -->
 <div class="relative z-10 max-w-3xl flex flex-col items-center gap-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
 <div class="inline-block px-4 py-1 bg-xp-green text-on-primary-container font-label-caps text-label-caps uppercase rounded-sm mb-4">
-                Phiên Bản 1.21 Trình Làng
-            </div>
+                    Phiên Bản Mới: Hang Lưu Huỳnh
+                </div>
 <h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg uppercase tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                Minecraft 1.21: Trải Nghiệm Miễn Phí
-            </h2>
+                    MINECRAFT: KHÁM PHÁ HANG LƯU HUỲNH
+                </h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                Tải ngay phiên bản mới nhất với đầy đủ tính năng. An toàn, hợp lệ và được xác nhận.
-            </p>
+                    Dấn thân vào những hang động độc hại chứa đầy tinh thể vàng huyền bí. Một thế giới ngầm nguy hiểm đang chờ đợi bạn.
+                </p>
 <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
 <a class="pixel-texture bg-primary-container text-on-primary-container font-button-text text-button-text px-10 py-5 beveled-edge uppercase flex items-center justify-center gap-3 active:translate-x-[2px] active:translate-y-[2px] btn-download-animated" href="https://youtu.be/dQw4w9WgXcQ?si=bwGcGFQqYL4PRQtq" target="_blank">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
-                    📥 TẢI MINECRAFT 1.21 MIỄN PHÍ
-                </a>
+                        📥 TẢI MINECRAFT MIỄN PHÍ
+                    </a>
 </div>
 <!-- XP Bar Decorative Element -->
 <div class="w-64 h-3 bg-surface-container-highest border border-outline/30 mt-12 relative overflow-hidden">
 <div class="absolute top-0 left-0 h-full bg-xp-green w-3/4 shadow-[0_0_15px_rgba(198,255,0,0.6)]"></div>
-<div class="absolute inset-0 flex items-center justify-center text-[8px] font-label-caps text-white pointer-events-none">LOADING ASSETS... 75%</div>
+<div class="absolute inset-0 flex items-center justify-center text-[8px] font-label-caps text-white pointer-events-none">ĐANG TẢI TÀI NGUYÊN... 75%</div>
 </div>
 </div>
 </section>
-<!-- Content Section: Tricky Trials -->
+<!-- Content Section: Sulfur Cave Update -->
 <section class="py-section-gap px-margin-mobile max-w-container-max mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 <!-- Main Feature Card -->
-<div class="lg:col-span-8 glass-card beveled-edge p-8 md:p-12">
+<div class="lg:col-span-8 glass-card beveled-edge p-8 md:p-12 animate-float-subtle">
 <div class="flex items-center gap-3 text-xp-green mb-6">
-<span class="material-symbols-outlined">auto_awesome</span>
-<span class="font-label-caps text-label-caps uppercase">Bản cập nhật lớn nhất năm</span>
+<span class="material-symbols-outlined">science</span>
+<span class="font-label-caps text-label-caps uppercase">Bản cập nhật Hang Lưu Huỳnh</span>
 </div>
-<h3 class="font-headline-md text-headline-md mb-6 text-primary">The Tricky Trials Update</h3>
+<h3 class="font-headline-md text-headline-md mb-6 text-primary">The Sulfur Cave Update</h3>
 <div class="space-y-6 font-body-lg text-body-lg text-on-surface-variant">
 <p>
-                        Bản cập nhật Minecraft 1.21 mang tên <span class="text-secondary font-bold italic">"Tricky Trials"</span> chính thức mang đến những thử thách mới đầy kịch tính cho cộng đồng game thủ. Điểm nhấn là các **Trial Chambers** — những công trình ngầm rộng lớn chứa đầy cạm bẫy và phần thưởng quý giá.
-                    </p>
+                            Bản cập nhật <span class="text-secondary font-bold italic">"Hang Lưu Huỳnh"</span> giới thiệu một hệ sinh thái ngầm hoàn toàn mới. Khám phá những cấu trúc hang động độc đáo, nơi các **Tinh thể Lưu huỳnh** phát sáng rực rỡ nhưng ẩn chứa đầy rẫy hiểm nguy.
+                        </p>
 <p>
-                        Gặp gỡ **The Breeze**, sinh vật linh hoạt điều khiển gió, và khám phá khối **Crafter** mới giúp tự động hóa quá trình chế tạo vật phẩm. Đây là bước tiến lớn cho cả người chơi phiêu lưu và những kỹ sư Redstone tài năng.
-                    </p>
+                            Hãy cẩn trọng với những **Hồ Axit** độc hại và làn hơi lưu huỳnh bốc lên từ lòng đất. Để sống sót, người chơi cần chế tạo các bộ đồ bảo hộ mới và sử dụng các khối tinh thể để khai thác năng lượng hóa học chưa từng thấy.
+                        </p>
 <div class="bg-surface-container-high/50 p-6 rounded-lg border-l-4 border-xp-green italic">
-                        "Một kỷ nguyên mới của sự sáng tạo và chiến đấu đã bắt đầu. Bạn đã sẵn sàng để vượt qua các thử thách chưa?"
-                    </div>
+                            "Bóng tối không còn là nỗi sợ duy nhất. Làn khói vàng và những hồ axit sẽ thử thách bản năng sinh tồn của bạn."
+                        </div>
 </div>
 </div>
 <!-- Info Sidebar -->
 <div class="lg:col-span-4 flex flex-col gap-6">
 <!-- Tech Specs Card -->
-<div class="bg-dirt-darker beveled-edge p-6">
-<h4 class="font-label-caps text-label-caps uppercase text-secondary mb-4 border-b border-white/10 pb-2">Thông Số Kỹ Thuật</h4>
+<div class="bg-dirt-darker beveled-edge p-6 animate-float-delayed">
+<h4 class="font-label-caps text-label-caps uppercase text-secondary mb-4 border-b border-white/10 pb-2">Thông Số Bản Cập Nhật</h4>
 <ul class="space-y-4 font-body-md text-body-md">
 <li class="flex justify-between border-b border-white/5 pb-2">
-<span class="text-on-surface-variant">Phiên bản:</span>
-<span class="font-bold text-xp-green">1.21 (Tricky Trials)</span>
+<span class="text-on-surface-variant">Chủ đề:</span>
+<span class="font-bold text-xp-green">Hang Lưu Huỳnh</span>
 </li>
 <li class="flex justify-between border-b border-white/5 pb-2">
 <span class="text-on-surface-variant">Dung lượng:</span>
-<span class="font-bold text-white">~450 MB</span>
+<span class="font-bold text-white">~520 MB</span>
 </li>
 <li class="flex justify-between border-b border-white/5 pb-2">
 <span class="text-on-surface-variant">Trạng thái:</span>
 <span class="font-bold text-primary-fixed flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">verified</span> Đã xác minh
-                            </span>
+                                </span>
 </li>
 </ul>
 </div>
 <!-- Credits Card -->
-<div class="bg-surface-container-highest beveled-edge p-6 flex-grow">
+<div class="bg-surface-container-highest beveled-edge p-6 flex-grow animate-float-subtle">
 <div class="flex items-center gap-2 mb-4 text-tertiary">
 <span class="material-symbols-outlined">share</span>
 <h4 class="font-label-caps text-label-caps uppercase">Nguồn &amp; Tín Nhiệm</h4>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                        Nội dung và hình ảnh được tổng hợp từ các nền tảng **YouTube** và **TikTok**. Chúng tôi xin gửi lời cảm ơn chân thành đến cộng đồng sáng tạo nội dung đã cung cấp những hình ảnh chân thực nhất về bản cập nhật này.
-                    </p>
+                            Nội dung và hình ảnh được tổng hợp từ các nền tảng sáng tạo. Cảm ơn cộng đồng đã chia sẻ những ý tưởng tuyệt vời về phiên bản Hang Lưu Huỳnh huyền bí này.
+                        </p>
 <div class="mt-6 pt-4 border-t border-white/5 flex gap-4">
 <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/50">
 <span class="material-symbols-outlined">video_library</span>
@@ -262,34 +275,33 @@
 <section class="py-section-gap px-margin-mobile bg-surface-container-lowest border-y border-outline-variant">
 <div class="max-w-container-max mx-auto text-center flex flex-col items-center gap-6">
 <span class="material-symbols-outlined text-xp-green text-5xl">cloud_download</span>
-<h3 class="font-headline-md text-headline-md">Sẵn sàng dấn thân vào cuộc phiêu lưu?</h3>
+<h3 class="font-headline-md text-headline-md">Sẵn sàng dấn thân vào hang tối?</h3>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                Đừng bỏ lỡ cơ hội trải nghiệm sớm nhất bản cập nhật 1.21. Tải về ngay hôm nay và bắt đầu xây dựng thế giới của riêng bạn.
-            </p>
+                    Đừng bỏ lỡ cơ hội trải nghiệm sớm nhất bản cập nhật Hang Lưu Huỳnh. Tải về ngay hôm nay và chinh phục thử thách mới.
+                </p>
 <form class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-4">
 <input class="flex-grow bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="Nhập email nhận tin tức..." type="email"/>
 <button class="bg-secondary-container text-on-secondary-container px-8 py-3 font-button-text text-button-text uppercase active:scale-95 transition-transform">
-                    Đăng Ký
-                </button>
+                        Đăng Ký
+                    </button>
 </form>
 </div>
 </section>
 </main>
 <!-- Footer Component -->
-<footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker dark:bg-surface-container-lowest">
+<footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker">
 <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
 <div class="flex flex-col items-center md:items-start gap-2">
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT 1.21</span>
-<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-70">
-                © 2024 Mojang AB. TM Microsoft Corporation.
-            </p>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT HANG LƯU HUỲNH</span>
+<p class="font-body-md text-body-md text-secondary opacity-70">
+                    © 2024 Mojang AB. TM Microsoft Corporation.
+                </p>
 </div>
 <nav class="flex flex-wrap justify-center gap-6">
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">EULA</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Privacy Policy</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Brand Guidelines</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Support</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Contact</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Chính sách bảo mật</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Hướng dẫn thương hiệu</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Hỗ trợ</a>
 </nav>
 <div class="flex gap-4">
 <span class="material-symbols-outlined text-outline cursor-pointer hover:text-xp-green transition-colors">public</span>
@@ -298,26 +310,130 @@
 </div>
 </footer>
 <script>
-    // Parallax effect for hero
-    window.addEventListener('scroll', () => {
-        const scroll = window.pageYOffset;
-        const heroImg = document.querySelector('section img');
-        if (heroImg) {
-            heroImg.style.transform = `translateY(${scroll * 0.4}px)`;
-        }
-    });
+        // WebGL Shader Implementation for Toxic Mist
+        const canvas = document.getElementById('toxic-mist-canvas');
+        if (canvas) {
+            const gl = canvas.getContext('webgl');
+            if (gl) {
+                const vsSource = `
+                    attribute vec4 a_position;
+                    varying vec2 v_texCoord;
+                    void main() {
+                        gl_Position = a_position;
+                        v_texCoord = (a_position.xy + 1.0) / 2.0;
+                    }
+                `;
+                const fsSource = `
+                    precision highp float;
+                    varying vec2 v_texCoord;
+                    uniform float u_time;
+                    uniform vec2 u_resolution;
 
-    // Simple interaction logic for download button icons
-    const downloadBtn = document.querySelector('.btn-download-animated');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('mouseenter', () => {
-            const icon = downloadBtn.querySelector('.material-symbols-outlined');
-            if (icon) icon.style.transform = 'translateY(2px)';
+                    float noise(vec2 p) {
+                        return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+                    }
+
+                    float smoothNoise(vec2 p) {
+                        vec2 i = floor(p);
+                        vec2 f = fract(p);
+                        f = f * f * (3.0 - 2.0 * f);
+                        float a = noise(i);
+                        float b = noise(i + vec2(1.0, 0.0));
+                        float c = noise(i + vec2(0.0, 1.0));
+                        float d = noise(i + vec2(1.0, 1.0));
+                        return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+                    }
+
+                    float fbm(vec2 p) {
+                        float v = 0.0;
+                        float a = 0.5;
+                        for (int i = 0; i < 5; i++) {
+                            v += a * smoothNoise(p);
+                            p *= 2.0;
+                            a *= 0.5;
+                        }
+                        return v;
+                    }
+
+                    void main() {
+                        vec2 uv = v_texCoord;
+                        vec2 p = uv * 3.0;
+                        
+                        // Tạo chuyển động khói lững lờ
+                        float n = fbm(p + vec2(u_time * 0.1, u_time * 0.05));
+                        
+                        // Màu vàng lưu huỳnh đặc trưng (toxic yellow-green)
+                        vec3 sulfurColor = vec3(0.8, 0.9, 0.1);
+                        vec3 deepCaveColor = vec3(0.05, 0.06, 0.04);
+                        
+                        // Hiệu ứng hạt ánh sáng (sparkles)
+                        float sparkle = pow(noise(uv * 10.0 + u_time * 0.5), 20.0);
+                        
+                        vec3 finalColor = mix(deepCaveColor, sulfurColor, n * 0.4);
+                        finalColor += sulfurColor * sparkle * 0.5;
+                        
+                        gl_FragColor = vec4(finalColor, 0.3); // Độ trong suốt để lồng vào nền
+                    }
+                `;
+
+                function createShader(gl, type, source) {
+                    const shader = gl.createShader(type);
+                    gl.shaderSource(shader, source);
+                    gl.compileShader(shader);
+                    return shader;
+                }
+
+                const program = gl.createProgram();
+                gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
+                gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+                gl.linkProgram(program);
+
+                const positionBuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
+                const positionLocation = gl.getAttribLocation(program, 'a_position');
+                const timeLocation = gl.getUniformLocation(program, 'u_time');
+                const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+
+                function render(time) {
+                    canvas.width = canvas.clientWidth;
+                    canvas.height = canvas.clientHeight;
+                    gl.viewport(0, 0, canvas.width, canvas.height);
+                    gl.useProgram(program);
+                    gl.enableVertexAttribArray(positionLocation);
+                    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+                    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+                    gl.uniform1f(timeLocation, time * 0.001);
+                    gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
+                    requestAnimationFrame(render);
+                }
+                requestAnimationFrame(render);
+            }
+        }
+
+        // Parallax effect for hero (refined)
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const heroImg = document.querySelector('section img');
+            if (heroImg) {
+                // Combine Ken Burns with slight parallax
+                heroImg.style.marginTop = `${scroll * 0.2}px`;
+            }
         });
-        downloadBtn.addEventListener('mouseleave', () => {
-            const icon = downloadBtn.querySelector('.material-symbols-outlined');
-            if (icon) icon.style.transform = 'translateY(0)';
-        });
-    }
-</script>
+
+        // Interaction logic for download button
+        const downloadBtn = document.querySelector('.btn-download-animated');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('mouseenter', () => {
+                const icon = downloadBtn.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'translateY(2px)';
+            });
+            downloadBtn.addEventListener('mouseleave', () => {
+                const icon = downloadBtn.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'translateY(0)';
+            });
+        }
+    </script>
 </body></html>
