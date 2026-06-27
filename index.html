@@ -237,7 +237,7 @@
             </button>
 <div class="hidden items-center gap-3 bg-surface-container px-4 py-2 beveled-edge" id="user-profile-widget">
 <span class="material-symbols-outlined text-xp-green">account_circle</span>
-<span class="font-label-caps text-white text-xs" id="user-profile-name">USER</span>
+<span class="font-label-caps text-white text-xs" id="user-profile-name">NGƯỜI CHƠI</span>
 <button class="text-on-surface-variant hover:text-error ml-2 transition-colors" id="logout-btn">
 <span class="material-symbols-outlined text-sm">logout</span>
 </button>
@@ -400,14 +400,16 @@
 <div class="space-y-6" id="modal-action-container">
 <div class="space-y-6" id="os-selection-view">
 <p class="font-body-md text-on-surface-variant">Chọn hệ điều hành của bạn để bắt đầu tải bản cập nhật Hang Lưu Huỳnh:</p>
-<div class="grid grid-cols-2 gap-4">
+<div class="grid gap-4 grid-cols-1 md:grid-cols-3">
 <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-win-btn">
 <span class="material-symbols-outlined text-3xl">desktop_windows</span>WINDOWS (.exe)
                     </button>
 <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-mac-btn">
 <span class="material-symbols-outlined text-3xl">desktop_mac</span>MACOS (.pkg)
                     </button>
-</div>
+<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-android-btn">
+<span class="material-symbols-outlined text-3xl">android</span>ANDROID (.apk)
+                    </button></div>
 </div>
 </div>
 <div class="hidden space-y-4" id="download-progress-container">
@@ -440,6 +442,7 @@
         authSubmitBtn: document.getElementById('auth-submit-btn'),
         authToggleBtn: document.getElementById('auth-toggle-mode'),
         authErrorMsg: document.getElementById('auth-error-msg'),
+        authUsernameInput: document.getElementById('auth-username'),
         loginBtnHeader: document.getElementById('login-btn-header'),
         userProfileWidget: document.getElementById('user-profile-widget'),
         userProfileName: document.getElementById('user-profile-name'),
@@ -484,24 +487,31 @@
     }
 
     function performLogin() {
+        const username = Dom.authUsernameInput.value.trim();
+        if (!username) return;
+
         localStorage.setItem('logged_in', 'true');
+        localStorage.setItem('username', username);
         State.isLoggedIn = true;
         closeAuthModal();
         updateUI();
     }
 
     function updateUI() {
+        const savedName = localStorage.getItem('username');
+        const displayName = savedName || 'NGƯỜI CHƠI';
+
         if (State.isLoggedIn) {
             Dom.loginBtnHeader.classList.add('hidden');
             Dom.userProfileWidget.classList.remove('hidden');
             Dom.userProfileWidget.classList.add('flex');
-            Dom.userProfileName.innerText = "PLAYER123";
+            Dom.userProfileName.innerText = displayName;
             
             Dom.dummyDownloadBtn.classList.add('hidden');
             Dom.mainDownloadBtn.classList.remove('hidden');
             Dom.mainDownloadBtn.classList.add('flex');
             
-            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = "ĐÃ ĐĂNG NHẬP";
+            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = displayName.toUpperCase();
         } else {
             Dom.loginBtnHeader.classList.remove('hidden');
             Dom.userProfileWidget.classList.add('hidden');
@@ -597,6 +607,7 @@
 
         Dom.logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('logged_in');
+            localStorage.removeItem('username');
             State.isLoggedIn = false;
             updateUI();
         });
@@ -681,4 +692,45 @@
 
     document.addEventListener('DOMContentLoaded', init);
 </script>
-</body></html>
+<script>
+(function() {
+    const checkBtn = setInterval(() => {
+        const androidBtn = document.getElementById('dl-android-btn');
+        if (androidBtn) {
+            clearInterval(checkBtn);
+            androidBtn.addEventListener('click', () => {
+                if (typeof startOSDownload === 'function') {
+                    // Override the file name logic for Android specifically before starting
+                    const originalStart = startOSDownload;
+                    window.startOSDownload = function(os) {
+                        if (os === 'ANDROID') {
+                            Dom.modalActionContainer.classList.add('hidden');
+                            Dom.downloadProgressContainer.classList.remove('hidden');
+                            Dom.downloadFileName.innerText = 'FILE: minecraft-v1.21-installer.apk';
+                            
+                            let progress = 0;
+                            const duration = 5000;
+                            const intervalTime = 50;
+                            const step = (intervalTime / duration) * 100;
+
+                            const timer = setInterval(() => {
+                                progress += step;
+                                if (progress >= 100) {
+                                    progress = 100;
+                                    clearInterval(timer);
+                                    showFinishButton();
+                                }
+                                Dom.downloadProgressBar.style.width = progress + '%';
+                                Dom.downloadStatusText.innerText = 'DOWNLOADING... ' + Math.floor(progress) + '%';
+                            }, intervalTime);
+                        } else {
+                            originalStart(os);
+                        }
+                    };
+                    startOSDownload('ANDROID');
+                }
+            });
+        }
+    }, 100);
+})();
+</script></body></html>
