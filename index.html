@@ -176,49 +176,24 @@
 </button>
 </div>
 <nav class="flex flex-col gap-6">
-<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#top">
+<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="index.html">
 <span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                Trang chủ
-            </a>
+                    Trang chủ
+                </a>
 <a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#update-section">
 <span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                Bản cập nhật
-            </a>
+                    Bản cập nhật
+                </a>
 <a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#newsletter-section">
 <span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                Nhận thông báo
-            </a>
+                    Nhận thông báo
+                </a>
 </nav>
 <div class="mt-auto pt-8 border-t border-outline-variant">
 <button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-4 beveled-edge uppercase btn-auth-trigger" id="mobile-auth-trigger">
-                ĐĂNG NHẬP
-            </button>
+                    ĐĂNG NHẬP
+                </button>
 </div>
-</div>
-</div>
-<!-- Login/Sign Up Modal -->
-<div class="hidden fixed inset-0 z-[120] flex items-center justify-center p-gutter" id="auth-modal">
-<div class="absolute inset-0 bg-background/90 backdrop-blur-md" id="auth-modal-backdrop"></div>
-<div class="relative bg-surface-container-high border border-outline-variant p-8 w-full max-w-md beveled-edge pixel-texture">
-<div class="flex justify-between items-center mb-6">
-<h3 class="font-display-lg text-primary uppercase text-2xl tracking-tight" id="auth-modal-title">ĐĂNG NHẬP</h3>
-<button class="text-outline hover:text-white" id="close-auth-modal"><span class="material-symbols-outlined">close</span></button>
-</div>
-<form class="space-y-6" id="auth-form">
-<div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Tên người dùng / Email</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="auth-username" placeholder="minecraft_player@email.com" required="" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="auth-password" placeholder="••••••••" required="" type="password"/>
-</div>
-<div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="auth-error-msg"></div>
-<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" id="auth-submit-btn" type="submit">ĐĂNG NHẬP</button>
-<div class="text-center">
-<button class="text-on-surface-variant font-body-md text-sm hover:text-xp-green transition-colors underline" id="auth-toggle-mode" type="button">Bạn chưa có tài khoản? Đăng ký ngay</button>
-</div>
-</form>
 </div>
 </div>
 <!-- Top AppBar -->
@@ -232,9 +207,9 @@
 <span class="ml-2 px-2 py-0.5 bg-xp-green/20 border border-xp-green text-xp-green font-label-caps text-[10px] rounded-sm self-center hover:bg-xp-green hover:text-black transition-colors cursor-help" title="Đây là phiên bản thử nghiệm">BETA</span>
 </div>
 <div class="flex items-center gap-4" id="header-auth-container">
-<button class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform btn-auth-trigger" id="login-btn-header">
-                ĐĂNG NHẬP
-            </button>
+<a class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" href="login.html" id="login-btn-header">
+                    ĐĂNG NHẬP
+                </a>
 <div class="hidden items-center gap-3 bg-surface-container px-4 py-2 beveled-edge" id="user-profile-widget">
 <span class="material-symbols-outlined text-xp-green">account_circle</span>
 <span class="font-label-caps text-white text-xs" id="user-profile-name">NGƯỜI CHƠI</span>
@@ -245,14 +220,66 @@
 </div>
 </div>
 </header>
-<main><section class="relative min-h-screen flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden"><div class="absolute inset-0 z-0"><img alt="Background" class="w-full h-full object-cover opacity-40 animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd"/><div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div></div><div class="relative z-10 w-full max-w-md animate-in fade-in slide-in-from-bottom-10 duration-700"><div class="mb-8 flex items-center gap-4"><a class="flex items-center gap-2 text-on-surface-variant hover:text-xp-green transition-colors group" href="#"><span class="material-symbols-outlined">arrow_back</span><span class="font-label-caps text-xs uppercase">Quay lại</span></a></div><div class="flex gap-1 mb-0"><button class="flex-1 py-4 px-6 bg-surface-container-highest text-xp-green font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors" onclick="document.getElementById('login-tab').classList.remove('hidden'); document.getElementById('register-tab').classList.add('hidden'); this.classList.add('bg-surface-container-highest', 'text-xp-green'); this.nextElementSibling.classList.remove('bg-surface-container-highest', 'text-xp-green');">Đăng nhập</button><button class="flex-1 py-4 px-6 bg-surface-container text-on-surface-variant font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors" onclick="document.getElementById('register-tab').classList.remove('hidden'); document.getElementById('login-tab').classList.add('hidden'); this.classList.add('bg-surface-container-highest', 'text-xp-green'); this.previousElementSibling.classList.remove('bg-surface-container-highest', 'text-xp-green');">Đăng ký</button></div><div class="bg-surface-container-highest border border-outline-variant p-8 beveled-edge pixel-texture rounded-b-lg shadow-2xl"><div class="space-y-6" id="login-tab"><div class="space-y-2"><label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label><input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="player@minecraft.net" type="email"/></div><div class="space-y-2"><label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label><input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="••••••••" type="password"/></div><button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.2)] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)]">ĐĂNG NHẬP</button></div><div class="hidden space-y-6" id="register-tab"><div class="space-y-2"><label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Họ và tên</label><input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="Steve Minecraft" type="text"/></div><div class="space-y-2"><label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label><input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="player@minecraft.net" type="email"/></div><div class="space-y-2"><label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label><input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" placeholder="••••••••" type="password"/></div><button class="w-full bg-xp-green text-black font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.4)]">ĐĂNG KÝ</button></div></div></div></section></main>
+<main>
+<section class="relative min-h-screen flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Background" class="w-full h-full object-cover opacity-40 animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+</div>
+<div class="relative z-10 w-full max-w-md animate-in fade-in slide-in-from-bottom-10 duration-700">
+<div class="mb-8 flex items-center gap-4">
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-xp-green transition-colors group" href="index.html">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label-caps text-xs uppercase">Quay lại</span>
+</a>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex gap-1 mb-0">
+<button class="flex-1 py-4 px-6 font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors bg-surface-container-highest text-xp-green" id="login-tab-btn">Đăng nhập</button>
+<button class="flex-1 py-4 px-6 font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors bg-surface-container text-on-surface-variant" id="register-tab-btn">Đăng ký</button>
+</div>
+<div class="bg-surface-container-highest border border-outline-variant p-8 beveled-edge pixel-texture rounded-b-lg shadow-2xl">
+<!-- Login Form -->
+<form class="space-y-6" id="login-form">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="login-email" placeholder="player@minecraft.net" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="login-error-msg"></div>
+<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.2)] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)]" type="submit">ĐĂNG NHẬP</button>
+</form>
+<!-- Register Form -->
+<form class="hidden space-y-6" id="register-form">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Họ và tên</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-name" placeholder="Steve Minecraft" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-email" placeholder="player@minecraft.net" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="register-error-msg"></div>
+<button class="w-full bg-xp-green text-black font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.4)]" type="submit">ĐĂNG KÝ</button>
+</form>
+</div>
+</div>
+</section>
+</main>
 <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker">
 <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
 <div class="flex flex-col items-center md:items-start gap-2">
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT HANG LƯU HUỲNH</span>
 <p class="font-body-md text-body-md text-secondary opacity-70">
-                © 2024 Mojang AB. TM Microsoft Corporation.
-            </p>
+                    © 2024 Mojang AB. TM Microsoft Corporation.
+                </p>
 </div>
 <nav class="flex flex-wrap justify-center gap-6">
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">EULA</a>
@@ -266,385 +293,154 @@
 </div>
 </div>
 </footer>
-<!-- Download Modal Overlay -->
-<div class="hidden fixed inset-0 z-[110] flex items-center justify-center p-gutter" id="download-modal">
-<div class="absolute inset-0 bg-background/90 backdrop-blur-md" id="download-modal-backdrop"></div>
-<div class="relative bg-surface-container-high border border-outline-variant p-8 w-full max-w-md beveled-edge pixel-texture">
-<div class="flex justify-between items-center mb-6">
-<h3 class="font-headline-md text-primary uppercase text-xl">TRÌNH TẢI MINECRAFT</h3>
-<button class="text-outline hover:text-white" id="close-modal"><span class="material-symbols-outlined">close</span></button>
-</div>
-<div class="space-y-6" id="modal-action-container">
-<div class="space-y-6" id="os-selection-view">
-<p class="font-body-md text-on-surface-variant">Chọn hệ điều hành của bạn để bắt đầu tải bản cập nhật Hang Lưu Huỳnh:</p>
-<div class="grid gap-4 grid-cols-1 md:grid-cols-3">
-<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-win-btn">
-<span class="material-symbols-outlined text-3xl">desktop_windows</span>WINDOWS (.exe)
-                    </button>
-<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-mac-btn">
-<span class="material-symbols-outlined text-3xl">desktop_mac</span>MACOS (.pkg)
-                    </button>
-<button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-android-btn">
-<span class="material-symbols-outlined text-3xl">android</span>ANDROID (.apk)
-                    </button>
-</div>
-</div>
-</div>
-<div class="hidden space-y-4" id="download-progress-container">
-<div class="flex flex-col gap-1 font-label-caps text-xs text-xp-green">
-<div class="flex justify-between">
-<span id="download-status-text">DOWNLOADING... 0%</span>
-<span id="download-file-name">FILE: ...</span>
-</div>
-</div>
-<div class="w-full h-4 bg-surface-container-lowest border border-outline/20">
-<div class="h-full bg-xp-green w-0 shadow-[0_0_10px_rgba(198,255,0,0.4)]" id="download-progress-bar"></div>
-</div>
-</div>
-</div>
-</div>
 <script>
-    // --- Global State Management ---
-    const State = {
-        isLoggedIn: sessionStorage.getItem('logged_in') === 'true', // Use sessionStorage for current session
-        isLoginMode: true
-    };
+        // --- Mock Database Management ---
+        const DB = {
+            getUsers: () => JSON.parse(localStorage.getItem('mc_users') || '[]'),
+            saveUser: (user) => {
+                const users = DB.getUsers();
+                users.push(user);
+                localStorage.setItem('mc_users', JSON.stringify(users));
+            },
+            findUser: (email) => DB.getUsers().find(u => u.email === email),
+            setCurrentUser: (user) => localStorage.setItem('currentUser', JSON.stringify(user)),
+            getCurrentUser: () => JSON.parse(localStorage.getItem('currentUser')),
+            logout: () => localStorage.removeItem('currentUser')
+        };
 
-    // --- Mock Database Management (localStorage) ---
-    const DB = {
-        getUsers: () => JSON.parse(localStorage.getItem('mc_users') || '[]'),
-        saveUser: (user) => {
-            const users = DB.getUsers();
-            users.push(user);
-            localStorage.setItem('mc_users', JSON.stringify(users));
-        },
-        findUser: (username) => DB.getUsers().find(u => u.username === username || u.email === username)
-    };
+        // --- DOM Elements ---
+        const loginTabBtn = document.getElementById('login-tab-btn');
+        const registerTabBtn = document.getElementById('register-tab-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        
+        const loginError = document.getElementById('login-error-msg');
+        const registerError = document.getElementById('register-error-msg');
 
-    // --- DOM Elements ---
-    const Dom = {
-        authModal: document.getElementById('auth-modal'),
-        authForm: document.getElementById('auth-form'),
-        authBackdrop: document.getElementById('auth-modal-backdrop'),
-        closeAuthBtn: document.getElementById('close-auth-modal'),
-        authTitle: document.getElementById('auth-modal-title'),
-        authSubmitBtn: document.getElementById('auth-submit-btn'),
-        authToggleBtn: document.getElementById('auth-toggle-mode'),
-        authErrorMsg: document.getElementById('auth-error-msg'),
-        authUsernameInput: document.getElementById('auth-username'),
-        authPasswordInput: document.getElementById('auth-password'),
-        loginBtnHeader: document.getElementById('login-btn-header'),
-        userProfileWidget: document.getElementById('user-profile-widget'),
-        userProfileName: document.getElementById('user-profile-name'),
-        logoutBtn: document.getElementById('logout-btn'),
-        mainDownloadBtn: document.getElementById('trigger-download-modal'),
-        dummyDownloadBtn: document.getElementById('dummy-download-btn'),
-        mobileMenu: document.getElementById('mobile-menu'),
-        mobileMenuDrawer: document.getElementById('mobile-menu-drawer'),
-        mobileMenuBackdrop: document.getElementById('mobile-menu-backdrop'),
-        openMenuBtn: document.getElementById('open-menu'),
-        closeMenuBtn: document.getElementById('close-menu'),
-        downloadModal: document.getElementById('download-modal'),
-        modalActionContainer: document.getElementById('modal-action-container'),
-        downloadProgressContainer: document.getElementById('download-progress-container'),
-        downloadProgressBar: document.getElementById('download-progress-bar'),
-        downloadStatusText: document.getElementById('download-status-text'),
-        closeDownloadModalBtn: document.getElementById('close-modal'),
-        downloadFileName: document.getElementById('download-file-name'),
-        dlWinBtn: document.getElementById('dl-win-btn'),
-        dlMacBtn: document.getElementById('dl-mac-btn'),
-        dlAndroidBtn: document.getElementById('dl-android-btn'),
-        mobileAuthTrigger: document.getElementById('mobile-auth-trigger')
-    };
+        const userProfileWidget = document.getElementById('user-profile-widget');
+        const userProfileName = document.getElementById('user-profile-name');
+        const loginBtnHeader = document.getElementById('login-btn-header');
+        const logoutBtn = document.getElementById('logout-btn');
 
-    // --- Auth Logic ---
-    function toggleAuthMode() {
-        State.isLoginMode = !State.isLoginMode;
-        Dom.authTitle.innerText = State.isLoginMode ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ';
-        Dom.authSubmitBtn.innerText = State.isLoginMode ? 'ĐĂNG NHẬP' : 'TẠO TÀI KHOẢN';
-        Dom.authToggleBtn.innerText = State.isLoginMode ? 'Bạn chưa có tài khoản? Đăng ký ngay' : 'Bạn đã có tài khoản? Đăng nhập';
-        Dom.authErrorMsg.classList.add('hidden');
-        Dom.authForm.reset();
-    }
+        const openMenuBtn = document.getElementById('open-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
 
-    function openAuthModal() {
-        Dom.authModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        Dom.authErrorMsg.classList.add('hidden');
-    }
-
-    function closeAuthModal() {
-        Dom.authModal.classList.add('hidden');
-        document.body.style.overflow = '';
-        Dom.authForm.reset();
-    }
-
-    function showError(msg) {
-        Dom.authErrorMsg.innerText = msg;
-        Dom.authErrorMsg.classList.remove('hidden');
-    }
-
-    function performAuth() {
-        const username = Dom.authUsernameInput.value.trim();
-        const password = Dom.authPasswordInput.value;
-
-        if (!username || !password) {
-            showError("Vui lòng điền đầy đủ thông tin.");
-            return;
+        // --- Logic: Tabs Switching ---
+        function showLogin() {
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+            loginTabBtn.classList.add('bg-surface-container-highest', 'text-xp-green');
+            loginTabBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            registerTabBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+            registerTabBtn.classList.remove('bg-surface-container-highest', 'text-xp-green');
+            loginError.classList.add('hidden');
         }
 
-        if (State.isLoginMode) {
-            // Login Logic
-            const user = DB.findUser(username);
-            if (user && user.password === password) {
-                sessionStorage.setItem('logged_in', 'true');
-                sessionStorage.setItem('username', user.username);
-                State.isLoggedIn = true;
-                closeAuthModal();
-                updateUI();
-            } else {
-                showError("Tên đăng nhập hoặc mật khẩu không đúng.");
-            }
-        } else {
-            // Register Logic
-            if (password.length < 6) {
-                showError("Mật khẩu phải có ít nhất 6 ký tự.");
-                return;
-            }
-            if (DB.findUser(username)) {
-                showError("Người dùng đã tồn tại.");
-                return;
-            }
-
-            DB.saveUser({ username, email: username, password });
-            showError("Đăng ký thành công! Đang chuyển sang đăng nhập...");
-            setTimeout(() => {
-                toggleAuthMode();
-                Dom.authUsernameInput.value = username;
-            }, 1000);
+        function showRegister() {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+            registerTabBtn.classList.add('bg-surface-container-highest', 'text-xp-green');
+            registerTabBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            loginTabBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+            loginTabBtn.classList.remove('bg-surface-container-highest', 'text-xp-green');
+            registerError.classList.add('hidden');
         }
-    }
 
-    function updateUI() {
-        const savedName = sessionStorage.getItem('username');
-        const displayName = savedName || 'NGƯỜI CHƠI';
+        loginTabBtn.addEventListener('click', showLogin);
+        registerTabBtn.addEventListener('click', showRegister);
 
-        if (State.isLoggedIn) {
-            Dom.loginBtnHeader.classList.add('hidden');
-            Dom.userProfileWidget.classList.remove('hidden');
-            Dom.userProfileWidget.classList.add('flex');
-            Dom.userProfileName.innerText = displayName.toUpperCase();
-            
-            Dom.dummyDownloadBtn.classList.add('hidden');
-            Dom.mainDownloadBtn.classList.remove('hidden');
-            Dom.mainDownloadBtn.classList.add('flex');
-            
-            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = displayName.toUpperCase();
-        } else {
-            Dom.loginBtnHeader.classList.remove('hidden');
-            Dom.userProfileWidget.classList.add('hidden');
-            Dom.userProfileWidget.classList.remove('flex');
-            
-            Dom.dummyDownloadBtn.classList.remove('hidden');
-            Dom.dummyDownloadBtn.classList.add('flex');
-            Dom.mainDownloadBtn.classList.add('hidden');
-            Dom.mainDownloadBtn.classList.remove('flex');
-
-            if (Dom.mobileAuthTrigger) Dom.mobileAuthTrigger.innerText = "ĐĂNG NHẬP";
-        }
-    }
-
-    // --- Mobile Menu Logic ---
-    function openMenu() {
-        Dom.mobileMenu.classList.remove('invisible', 'opacity-0');
-        Dom.mobileMenu.classList.add('visible', 'opacity-100');
-        Dom.mobileMenuDrawer.classList.remove('translate-x-full');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        Dom.mobileMenu.classList.remove('opacity-100');
-        Dom.mobileMenu.classList.add('opacity-0');
-        Dom.mobileMenuDrawer.classList.add('translate-x-full');
-        document.body.style.overflow = '';
-        setTimeout(() => {
-            Dom.mobileMenu.classList.remove('visible');
-            Dom.mobileMenu.classList.add('invisible');
-        }, 300);
-    }
-
-    // --- Download Sequence ---
-    function startOSDownload(os) {
-        Dom.modalActionContainer.classList.add('hidden');
-        Dom.downloadProgressContainer.classList.remove('hidden');
-        
-        let fileName = 'sulfur_cave_v1.0.exe';
-        if (os === 'MACOS') fileName = 'sulfur_cave_v1.0.pkg';
-        if (os === 'ANDROID') fileName = 'minecraft-v1.21-installer.apk';
-        
-        Dom.downloadFileName.innerText = 'FILE: ' + fileName;
-        
-        let progress = 0;
-        const duration = 5000;
-        const intervalTime = 50;
-        const step = (intervalTime / duration) * 100;
-
-        const timer = setInterval(() => {
-            progress += step;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(timer);
-                showFinishButton();
-            }
-            Dom.downloadProgressBar.style.width = progress + '%';
-            Dom.downloadStatusText.innerText = 'DOWNLOADING... ' + Math.floor(progress) + '%';
-        }, intervalTime);
-    }
-
-    function showFinishButton() {
-        Dom.downloadProgressContainer.classList.add('hidden');
-        Dom.modalActionContainer.innerHTML = `
-            <div class="text-center space-y-4">
-                <p class="font-body-md text-xp-green">Tải xuống hoàn tất!</p>
-                <button id="finish-download-btn" class="w-full bg-xp-green text-on-primary-container font-button-text text-button-text py-4 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform">
-                    MỞ TRÌNH CÀI ĐẶT
-                </button>
-            </div>
-        `;
-        Dom.modalActionContainer.classList.remove('hidden');
-        
-        document.getElementById('finish-download-btn').addEventListener('click', () => {
-            window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=bwGcGFQqYL4PRQtq';
-        });
-    }
-
-    // --- Initialization ---
-    function init() {
-        // Auth Event Listeners
-        document.querySelectorAll('.btn-auth-trigger').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (!State.isLoggedIn) {
-                    openAuthModal();
-                }
-            });
-        });
-
-        Dom.closeAuthBtn.addEventListener('click', closeAuthModal);
-        Dom.authBackdrop.addEventListener('click', closeAuthModal);
-        Dom.authToggleBtn.addEventListener('click', toggleAuthMode);
-
-        Dom.authForm.addEventListener('submit', (e) => {
+        // --- Logic: Registration ---
+        registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            performAuth();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            if (DB.findUser(email)) {
+                registerError.innerText = "Email này đã được sử dụng.";
+                registerError.classList.remove('hidden');
+                return;
+            }
+
+            const newUser = { name, email, password };
+            DB.saveUser(newUser);
+            
+            // Switch to login and pre-fill email
+            showLogin();
+            document.getElementById('login-email').value = email;
+            loginError.innerText = "Đăng ký thành công! Vui lòng đăng nhập.";
+            loginError.classList.remove('hidden');
+            loginError.classList.replace('text-error', 'text-xp-green');
+            registerForm.reset();
         });
 
-        Dom.logoutBtn.addEventListener('click', () => {
-            sessionStorage.removeItem('logged_in');
-            sessionStorage.removeItem('username');
-            State.isLoggedIn = false;
-            updateUI();
-        });
+        // --- Logic: Login ---
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
 
-        // Menu Event Listeners
-        Dom.openMenuBtn.addEventListener('click', openMenu);
-        Dom.closeMenuBtn.addEventListener('click', closeMenu);
-        Dom.mobileMenuBackdrop.addEventListener('click', closeMenu);
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Download Modal Listeners
-        Dom.mainDownloadBtn.addEventListener('click', () => {
-            if (State.isLoggedIn) {
-                Dom.downloadModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                Dom.modalActionContainer.innerHTML = `
-                    <div class="space-y-6" id="os-selection-view">
-                        <p class="font-body-md text-on-surface-variant">Chọn hệ điều hành của bạn để bắt đầu tải bản cập nhật Hang Lưu Huỳnh:</p>
-                        <div class="grid gap-4 grid-cols-1 md:grid-cols-3">
-                            <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-win-btn-new">
-                                <span class="material-symbols-outlined text-3xl">desktop_windows</span>WINDOWS (.exe)
-                            </button>
-                            <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-mac-btn-new">
-                                <span class="material-symbols-outlined text-3xl">desktop_mac</span>MACOS (.pkg)
-                            </button>
-                            <button class="bg-surface-container-highest text-white font-button-text text-button-text py-4 beveled-edge uppercase hover:bg-xp-green hover:text-black transition-colors flex flex-col items-center gap-2" id="dl-android-btn-new">
-                                <span class="material-symbols-outlined text-3xl">android</span>ANDROID (.apk)
-                            </button>
-                        </div>
-                    </div>
-                `;
-                Dom.modalActionContainer.classList.remove('hidden');
-                Dom.downloadProgressContainer.classList.add('hidden');
-                
-                // Re-bind listeners because we replaced HTML
-                document.getElementById('dl-win-btn-new').addEventListener('click', () => startOSDownload('WINDOWS'));
-                document.getElementById('dl-mac-btn-new').addEventListener('click', () => startOSDownload('MACOS'));
-                document.getElementById('dl-android-btn-new').addEventListener('click', () => startOSDownload('ANDROID'));
+            const user = DB.findUser(email);
+            if (user && user.password === password) {
+                DB.setCurrentUser(user);
+                updateUIState();
+                // Redirect or show success
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 500);
             } else {
-                openAuthModal();
+                loginError.innerText = "Email hoặc mật khẩu không chính xác.";
+                loginError.classList.remove('hidden');
+                loginError.classList.replace('text-xp-green', 'text-error');
             }
         });
 
-        Dom.closeDownloadModalBtn.addEventListener('click', () => {
-            Dom.downloadModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        });
-
-        updateUI();
-        initVisuals();
-    }
-
-    function initVisuals() {
-        const canvas = document.getElementById('toxic-mist-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let width, height;
-
-            function resize() {
-                width = canvas.width = canvas.parentElement.clientWidth;
-                height = canvas.height = canvas.parentElement.clientHeight;
-            }
-
-            window.addEventListener('resize', resize);
-            resize();
-
-            const particles = [];
-            for (let i = 0; i < 50; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 1.5,
-                    vy: (Math.random() - 0.5) * 1,
-                    size: Math.random() * 80 + 40
-                });
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = 'rgba(198, 255, 0, 0.05)';
-                ctx.filter = 'blur(40px)';
+        // --- Logic: UI Update ---
+        function updateUIState() {
+            const user = DB.getCurrentUser();
+            if (user) {
+                loginBtnHeader.classList.add('hidden');
+                userProfileWidget.classList.remove('hidden');
+                userProfileWidget.classList.add('flex');
+                userProfileName.innerText = user.name.toUpperCase();
                 
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    if (p.x < -p.size) p.x = width + p.size;
-                    if (p.x > width + p.size) p.x = -p.size;
-                    if (p.y < -p.size) p.y = height + p.size;
-                    if (p.y > height + p.size) p.y = -p.size;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-
-                requestAnimationFrame(animate);
+                // If on mobile
+                const mobileAuth = document.getElementById('mobile-auth-trigger');
+                if(mobileAuth) mobileAuth.innerText = user.name.toUpperCase();
+            } else {
+                loginBtnHeader.classList.remove('hidden');
+                userProfileWidget.classList.add('hidden');
+                userProfileWidget.classList.remove('flex');
             }
-            animate();
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', init);
-</script>
+        logoutBtn.addEventListener('click', () => {
+            DB.logout();
+            updateUIState();
+            window.location.reload();
+        });
+
+        // --- Logic: Navigation ---
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('invisible', 'opacity-0');
+            mobileMenuDrawer.classList.remove('translate-x-full');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('opacity-0');
+            mobileMenuDrawer.classList.add('translate-x-full');
+            setTimeout(() => { mobileMenu.classList.add('invisible'); }, 300);
+        };
+
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileMenuBackdrop.addEventListener('click', closeMenu);
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUIState();
+        });
+    </script>
 </body></html>
