@@ -100,8 +100,7 @@
                         "glow-pulse": "glow-pulse 3s infinite ease-in-out",
                         "shake": "shake 0.5s ease-in-out infinite",
                         "ken-burns": "ken-burns 20s infinite ease-in-out",
-                        "float-subtle": "float-subtle 6s infinite ease-in-out",
-                        "float-delayed": "float-subtle 8s infinite ease-in-out 1s"
+                        "float-subtle": "float-subtle 6s infinite ease-in-out"
                     },
                     "keyframes": {
                         "glow-pulse": {
@@ -138,23 +137,13 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.05), 4px 4px 0px rgba(0, 0, 0, 0.3);
         }
-        .glass-card {
-            background: rgba(28, 33, 27, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-        }
         .btn-download-animated {
             animation: glow-pulse 3s infinite ease-in-out;
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .btn-download-animated:hover, .btn-download-animated:active {
-            animation: shake 0.4s ease-in-out infinite, glow-pulse 1s infinite ease-in-out;
+        .btn-download-animated:hover {
             transform: scale(1.05);
             filter: brightness(1.1);
-        }
-        #toxic-mist-canvas {
-            pointer-events: none;
-            mix-blend-mode: screen;
         }
         .mobile-menu-overlay {
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -162,9 +151,14 @@
         .mobile-menu-content {
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #101510; }
+        ::-webkit-scrollbar-thumb { background: #313630; border: 2px solid #101510; }
+        ::-webkit-scrollbar-thumb:hover { background: #8ad88e; }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black" id="top">
+<body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black overflow-x-hidden" id="top">
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay invisible opacity-0 fixed inset-0 z-[100] flex justify-end" id="mobile-menu">
 <div class="absolute inset-0 bg-background/80 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
@@ -176,23 +170,19 @@
 </button>
 </div>
 <nav class="flex flex-col gap-6">
-<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="index.html">
+<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#top">
 <span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                    Trang chủ
-                </a>
+                Trang chủ
+            </a>
 <a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#update-section">
 <span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                    Bản cập nhật
-                </a>
-<a class="mobile-nav-link font-display-lg-mobile text-2xl uppercase text-white hover:text-xp-green transition-colors flex items-center gap-4 group" href="#newsletter-section">
-<span class="w-2 h-2 bg-xp-green scale-0 group-hover:scale-100 transition-transform"></span>
-                    Nhận thông báo
-                </a>
+                Bản cập nhật
+            </a>
 </nav>
 <div class="mt-auto pt-8 border-t border-outline-variant">
-<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-4 beveled-edge uppercase btn-auth-trigger" id="mobile-auth-trigger">
-                    ĐĂNG NHẬP
-                </button>
+<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-4 beveled-edge uppercase" id="mobile-logout-btn" style="display: none;">
+                ĐĂNG XUẤT
+            </button>
 </div>
 </div>
 </div>
@@ -203,34 +193,60 @@
 <button class="text-primary active:translate-x-[2px] active:translate-y-[2px] transition-transform" id="open-menu">
 <span class="material-symbols-outlined text-2xl">menu</span>
 </button>
-<h1 class="font-display-lg text-display-lg uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
-<span class="ml-2 px-2 py-0.5 bg-xp-green/20 border border-xp-green text-xp-green font-label-caps text-[10px] rounded-sm self-center hover:bg-xp-green hover:text-black transition-colors cursor-help" title="Đây là phiên bản thử nghiệm">BETA</span>
+<h1 class="font-display-lg text-2xl md:text-3xl uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
 </div>
 <div class="flex items-center gap-4" id="header-auth-container">
-<a class="bg-primary-container text-on-primary-container font-button-text text-button-text px-6 py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" href="login.html" id="login-btn-header">
-                    ĐĂNG NHẬP
-                </a>
-<div class="hidden items-center gap-3 bg-surface-container px-4 py-2 beveled-edge" id="user-profile-widget">
-<span class="material-symbols-outlined text-xp-green">account_circle</span>
-<span class="font-label-caps text-white text-xs" id="user-profile-name">NGƯỜI CHƠI</span>
-<button class="text-on-surface-variant hover:text-error ml-2 transition-colors" id="logout-btn">
+<!-- User Widget (Hidden by default) -->
+<div class="hidden items-center gap-2 bg-surface-container px-3 py-2 beveled-edge" id="user-profile-widget">
+<span class="material-symbols-outlined text-xp-green text-sm">account_circle</span>
+<span class="font-label-caps text-white text-[10px] md:text-xs truncate max-w-[80px] md:max-w-[150px]" id="user-profile-name">NGƯỜI CHƠI</span>
+<button class="text-on-surface-variant hover:text-error ml-1 transition-colors" id="logout-btn">
 <span class="material-symbols-outlined text-sm">logout</span>
 </button>
 </div>
+<!-- Auth Link (Shown by default) -->
+<a class="bg-primary-container text-on-primary-container font-button-text text-xs md:text-button-text px-4 md:px-6 py-2 md:py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" href="#auth-section" id="login-btn-header">
+                ĐĂNG NHẬP
+            </a>
 </div>
 </div>
 </header>
 <main>
-<section class="relative min-h-screen flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden">
+<!-- Hero / Content Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden" id="main-content">
 <div class="absolute inset-0 z-0">
 <img alt="Background" class="w-full h-full object-cover opacity-40 animate-ken-burns" src="https://lh3.googleusercontent.com/aida/AP1WRLvOysV2ZgaxeczmksTXU8umIew_DbvRXnlfcVkUPU65TOx4Yf5xOuuAe1MWFCp19ZeD5FEzN_uv8aMVYQ5TQNCTup1mg3agcxIAOIJdVXLCeqdGTY7plktiH8qd9dExgJ4Nc-Yz7vhxKPJmZFvuMg9dUx6I-F4zw8lSWpJTgfXDvSrCafoVh6GwMV6s-BpN3bzyKffGlhgg8st7pga5Tt8tn_HZwSykKGVkLY69hkC7RNwlWHifm5n3M8nd"/>
 <div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
 </div>
-<div class="relative z-10 w-full max-w-md animate-in fade-in slide-in-from-bottom-10 duration-700">
+<div class="relative z-10 w-full max-w-container-max flex flex-col items-center text-center">
+<h2 class="font-display-lg text-4xl md:text-6xl uppercase text-white mb-6 drop-shadow-lg">Hang Lưu Huỳnh</h2>
+<p class="font-body-lg text-lg text-on-surface-variant max-w-2xl mb-12">Khám phá chiều không gian mới bị ô nhiễm bởi khí độc và tinh thể lưu huỳnh rực rỡ. Một thử thách sinh tồn hoàn toàn mới.</p>
+<div class="w-full max-w-md" id="download-flow-container">
+<!-- If Not Logged In Message -->
+<div class="p-6 bg-surface-container-high beveled-edge border border-outline-variant pixel-texture" id="guest-message">
+<p class="font-label-caps text-secondary mb-4">Bạn cần đăng nhập để tải bản Beta này</p>
+<a class="inline-block bg-xp-green text-black font-button-text px-8 py-4 beveled-edge uppercase" href="#auth-section">Đến trang đăng nhập</a>
+</div>
+<!-- If Logged In: Download Button -->
+<div class="hidden" id="auth-download-area">
+<button class="btn-download-animated w-full bg-xp-green text-black font-button-text text-xl py-6 beveled-edge uppercase flex flex-col items-center gap-2 group" id="download-btn">
+<span id="btn-text">TẢI XUỐNG NGAY (.MCWORLD)</span>
+<div class="hidden w-4/5 h-2 bg-black/30 rounded-full mt-2 overflow-hidden" id="progress-bar-container">
+<div class="h-full bg-white w-0 transition-all duration-[5000ms] ease-linear" id="progress-bar-fill"></div>
+</div>
+</button>
+<p class="mt-4 font-label-caps text-xs text-xp-green/60 uppercase tracking-widest animate-pulse">Cần tối thiểu 500MB trống</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Auth Section (Modal-like) -->
+<section class="relative min-h-screen flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden bg-background" id="auth-section">
+<div class="relative z-10 w-full max-w-md">
 <div class="mb-8 flex items-center gap-4">
-<a class="flex items-center gap-2 text-on-surface-variant hover:text-xp-green transition-colors group" href="index.html">
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-xp-green transition-colors group" href="#top">
 <span class="material-symbols-outlined">arrow_back</span>
-<span class="font-label-caps text-xs uppercase">Quay lại</span>
+<span class="font-label-caps text-xs uppercase">Về trang chủ</span>
 </a>
 </div>
 <!-- Tabs Navigation -->
@@ -250,7 +266,7 @@
 <input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="login-password" placeholder="••••••••" required="" type="password"/>
 </div>
 <div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="login-error-msg"></div>
-<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.2)] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)]" type="submit">ĐĂNG NHẬP</button>
+<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" type="submit">ĐĂNG NHẬP</button>
 </form>
 <!-- Register Form -->
 <form class="hidden space-y-6" id="register-form">
@@ -274,18 +290,15 @@
 </section>
 </main>
 <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker">
-<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-6">
 <div class="flex flex-col items-center md:items-start gap-2">
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT HANG LƯU HUỲNH</span>
-<p class="font-body-md text-body-md text-secondary opacity-70">
-                    © 2024 Mojang AB. TM Microsoft Corporation.
-                </p>
+<p class="font-body-md text-body-md text-secondary opacity-70">© 2024 Mojang AB. Microsoft Corporation.</p>
 </div>
 <nav class="flex flex-wrap justify-center gap-6">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">EULA</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Chính sách bảo mật</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Hướng dẫn thương hiệu</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline cursor-pointer" href="#">Hỗ trợ</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">EULA</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Bảo mật</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Hỗ trợ</a>
 </nav>
 <div class="flex gap-4">
 <span class="material-symbols-outlined text-outline cursor-pointer hover:text-xp-green transition-colors">public</span>
@@ -294,153 +307,195 @@
 </div>
 </footer>
 <script>
-        // --- Mock Database Management ---
-        const DB = {
-            getUsers: () => JSON.parse(localStorage.getItem('mc_users') || '[]'),
-            saveUser: (user) => {
-                const users = DB.getUsers();
-                users.push(user);
-                localStorage.setItem('mc_users', JSON.stringify(users));
-            },
-            findUser: (email) => DB.getUsers().find(u => u.email === email),
-            setCurrentUser: (user) => localStorage.setItem('currentUser', JSON.stringify(user)),
-            getCurrentUser: () => JSON.parse(localStorage.getItem('currentUser')),
-            logout: () => localStorage.removeItem('currentUser')
-        };
+    // --- Data Management ---
+    const DB = {
+        getUsers: () => JSON.parse(localStorage.getItem('mc_users') || '[]'),
+        saveUser: (user) => {
+            const users = DB.getUsers();
+            users.push(user);
+            localStorage.setItem('mc_users', JSON.stringify(users));
+        },
+        findUser: (email) => DB.getUsers().find(u => u.email === email),
+        login: (user) => {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', user.name);
+            localStorage.setItem('userEmail', user.email);
+        },
+        logout: () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+        },
+        isLoggedIn: () => localStorage.getItem('isLoggedIn') === 'true',
+        getUserName: () => localStorage.getItem('userName') || 'Người chơi'
+    };
 
-        // --- DOM Elements ---
-        const loginTabBtn = document.getElementById('login-tab-btn');
-        const registerTabBtn = document.getElementById('register-tab-btn');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        
-        const loginError = document.getElementById('login-error-msg');
-        const registerError = document.getElementById('register-error-msg');
+    // --- DOM Elements ---
+    const loginTabBtn = document.getElementById('login-tab-btn');
+    const registerTabBtn = document.getElementById('register-tab-btn');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const loginError = document.getElementById('login-error-msg');
+    const registerError = document.getElementById('register-error-msg');
 
-        const userProfileWidget = document.getElementById('user-profile-widget');
-        const userProfileName = document.getElementById('user-profile-name');
-        const loginBtnHeader = document.getElementById('login-btn-header');
-        const logoutBtn = document.getElementById('logout-btn');
+    const guestMessage = document.getElementById('guest-message');
+    const authDownloadArea = document.getElementById('auth-download-area');
+    const authSection = document.getElementById('auth-section');
 
-        const openMenuBtn = document.getElementById('open-menu');
-        const closeMenuBtn = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
-        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    const userProfileWidget = document.getElementById('user-profile-widget');
+    const userProfileName = document.getElementById('user-profile-name');
+    const loginBtnHeader = document.getElementById('login-btn-header');
+    const logoutBtn = document.getElementById('logout-btn');
+    const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
 
-        // --- Logic: Tabs Switching ---
-        function showLogin() {
-            loginForm.classList.remove('hidden');
-            registerForm.classList.add('hidden');
-            loginTabBtn.classList.add('bg-surface-container-highest', 'text-xp-green');
-            loginTabBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
-            registerTabBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
-            registerTabBtn.classList.remove('bg-surface-container-highest', 'text-xp-green');
-            loginError.classList.add('hidden');
+    const downloadBtn = document.getElementById('download-btn');
+    const btnText = document.getElementById('btn-text');
+    const progressBarContainer = document.getElementById('progress-bar-container');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+
+    // --- Tab Logic ---
+    function showLogin() {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        loginTabBtn.classList.replace('bg-surface-container', 'bg-surface-container-highest');
+        loginTabBtn.classList.replace('text-on-surface-variant', 'text-xp-green');
+        registerTabBtn.classList.replace('bg-surface-container-highest', 'bg-surface-container');
+        registerTabBtn.classList.replace('text-xp-green', 'text-on-surface-variant');
+        loginError.classList.add('hidden');
+    }
+
+    function showRegister() {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        registerTabBtn.classList.replace('bg-surface-container', 'bg-surface-container-highest');
+        registerTabBtn.classList.replace('text-on-surface-variant', 'text-xp-green');
+        loginTabBtn.classList.replace('bg-surface-container-highest', 'bg-surface-container');
+        loginTabBtn.classList.replace('text-xp-green', 'text-on-surface-variant');
+        registerError.classList.add('hidden');
+    }
+
+    loginTabBtn.addEventListener('click', showLogin);
+    registerTabBtn.addEventListener('click', showRegister);
+
+    // --- Auth Logic ---
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('register-name').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const password = document.getElementById('register-password').value;
+
+        if (DB.findUser(email)) {
+            registerError.innerText = "Email này đã được sử dụng.";
+            registerError.classList.remove('hidden');
+            return;
         }
 
-        function showRegister() {
-            loginForm.classList.add('hidden');
-            registerForm.classList.remove('hidden');
-            registerTabBtn.classList.add('bg-surface-container-highest', 'text-xp-green');
-            registerTabBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
-            loginTabBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
-            loginTabBtn.classList.remove('bg-surface-container-highest', 'text-xp-green');
-            registerError.classList.add('hidden');
-        }
+        DB.saveUser({ name, email, password });
+        showLogin();
+        document.getElementById('login-email').value = email;
+        loginError.innerText = "Đăng ký thành công! Hãy đăng nhập.";
+        loginError.classList.remove('hidden');
+        loginError.classList.replace('text-error', 'text-xp-green');
+        registerForm.reset();
+    });
 
-        loginTabBtn.addEventListener('click', showLogin);
-        registerTabBtn.addEventListener('click', showRegister);
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
 
-        // --- Logic: Registration ---
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-
-            if (DB.findUser(email)) {
-                registerError.innerText = "Email này đã được sử dụng.";
-                registerError.classList.remove('hidden');
-                return;
-            }
-
-            const newUser = { name, email, password };
-            DB.saveUser(newUser);
-            
-            // Switch to login and pre-fill email
-            showLogin();
-            document.getElementById('login-email').value = email;
-            loginError.innerText = "Đăng ký thành công! Vui lòng đăng nhập.";
+        const user = DB.findUser(email);
+        if (user && user.password === password) {
+            DB.login(user);
+            updateUI();
+            window.location.hash = "top";
+        } else {
+            loginError.innerText = "Email hoặc mật khẩu không đúng.";
             loginError.classList.remove('hidden');
-            loginError.classList.replace('text-error', 'text-xp-green');
-            registerForm.reset();
-        });
-
-        // --- Logic: Login ---
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            const user = DB.findUser(email);
-            if (user && user.password === password) {
-                DB.setCurrentUser(user);
-                updateUIState();
-                // Redirect or show success
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 500);
-            } else {
-                loginError.innerText = "Email hoặc mật khẩu không chính xác.";
-                loginError.classList.remove('hidden');
-                loginError.classList.replace('text-xp-green', 'text-error');
-            }
-        });
-
-        // --- Logic: UI Update ---
-        function updateUIState() {
-            const user = DB.getCurrentUser();
-            if (user) {
-                loginBtnHeader.classList.add('hidden');
-                userProfileWidget.classList.remove('hidden');
-                userProfileWidget.classList.add('flex');
-                userProfileName.innerText = user.name.toUpperCase();
-                
-                // If on mobile
-                const mobileAuth = document.getElementById('mobile-auth-trigger');
-                if(mobileAuth) mobileAuth.innerText = user.name.toUpperCase();
-            } else {
-                loginBtnHeader.classList.remove('hidden');
-                userProfileWidget.classList.add('hidden');
-                userProfileWidget.classList.remove('flex');
-            }
+            loginError.classList.replace('text-xp-green', 'text-error');
         }
+    });
 
-        logoutBtn.addEventListener('click', () => {
-            DB.logout();
-            updateUIState();
-            window.location.reload();
-        });
+    function updateUI() {
+        const loggedIn = DB.isLoggedIn();
+        const name = DB.getUserName();
 
-        // --- Logic: Navigation ---
-        openMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('invisible', 'opacity-0');
-            mobileMenuDrawer.classList.remove('translate-x-full');
-        });
+        if (loggedIn) {
+            authSection.classList.add('hidden');
+            guestMessage.classList.add('hidden');
+            authDownloadArea.classList.remove('hidden');
+            loginBtnHeader.classList.add('hidden');
+            userProfileWidget.classList.remove('hidden');
+            userProfileWidget.classList.add('flex');
+            userProfileName.innerText = name.toUpperCase();
+            mobileLogoutBtn.style.display = 'block';
+        } else {
+            authSection.classList.remove('hidden');
+            guestMessage.classList.remove('hidden');
+            authDownloadArea.classList.add('hidden');
+            loginBtnHeader.classList.remove('hidden');
+            userProfileWidget.classList.add('hidden');
+            userProfileWidget.classList.remove('flex');
+            mobileLogoutBtn.style.display = 'none';
+        }
+    }
 
-        const closeMenu = () => {
-            mobileMenu.classList.add('opacity-0');
-            mobileMenuDrawer.classList.add('translate-x-full');
-            setTimeout(() => { mobileMenu.classList.add('invisible'); }, 300);
-        };
+    logoutBtn.addEventListener('click', () => {
+        DB.logout();
+        updateUI();
+    });
 
-        closeMenuBtn.addEventListener('click', closeMenu);
-        mobileMenuBackdrop.addEventListener('click', closeMenu);
+    mobileLogoutBtn.addEventListener('click', () => {
+        DB.logout();
+        updateUI();
+        document.getElementById('close-menu').click();
+    });
 
-        // --- Initialization ---
-        document.addEventListener('DOMContentLoaded', () => {
-            updateUIState();
-        });
-    </script>
+    // --- Download & Rickroll Logic ---
+    let isDownloading = false;
+    downloadBtn.addEventListener('click', () => {
+        if (isDownloading) return;
+        isDownloading = true;
+
+        btnText.innerText = "ĐANG TẢI DỮ LIỆU CẤU TRÚC...";
+        progressBarContainer.classList.remove('hidden');
+        
+        // Reset and trigger CSS animation
+        progressBarFill.style.width = '0%';
+        setTimeout(() => {
+            progressBarFill.style.width = '100%';
+        }, 10);
+
+        setTimeout(() => {
+            btnText.innerText = "HOÀN TẤT - ĐANG CHUẨN BỊ FILE!";
+            setTimeout(() => {
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            }, 1000);
+        }, 5000);
+    });
+
+    // --- Mobile Menu ---
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+    openMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('invisible', 'opacity-0');
+        mobileMenuDrawer.classList.remove('translate-x-full');
+    });
+
+    const closeMenu = () => {
+        mobileMenu.classList.add('opacity-0');
+        mobileMenuDrawer.classList.add('translate-x-full');
+        setTimeout(() => { mobileMenu.classList.add('invisible'); }, 300);
+    };
+
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenuBackdrop.addEventListener('click', closeMenu);
+
+    // --- Init ---
+    document.addEventListener('DOMContentLoaded', updateUI);
+</script>
 </body></html>
