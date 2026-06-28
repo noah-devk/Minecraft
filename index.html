@@ -142,7 +142,7 @@
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .btn-download-animated:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             filter: brightness(1.1);
         }
         .mobile-menu-overlay {
@@ -156,6 +156,12 @@
         ::-webkit-scrollbar-track { background: #101510; }
         ::-webkit-scrollbar-thumb { background: #313630; border: 2px solid #101510; }
         ::-webkit-scrollbar-thumb:hover { background: #8ad88e; }
+        
+        .auth-tab-active {
+            background-color: #313630;
+            color: #C6FF00;
+            border-bottom: 2px solid #C6FF00;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background min-h-screen selection:bg-xp-green selection:text-black overflow-x-hidden" id="top">
@@ -196,7 +202,7 @@
 <h1 class="font-display-lg text-2xl md:text-3xl uppercase tracking-tight font-bold text-xp-green tracking-tighter">MINECRAFT</h1>
 </div>
 <div class="flex items-center gap-4" id="header-auth-container">
-<!-- User Widget (Hidden by default) -->
+<!-- User Widget -->
 <div class="hidden items-center gap-2 bg-surface-container px-3 py-2 beveled-edge" id="user-profile-widget">
 <span class="material-symbols-outlined text-xp-green text-sm">account_circle</span>
 <span class="font-label-caps text-white text-[10px] md:text-xs truncate max-w-[80px] md:max-w-[150px]" id="user-profile-name">NGƯỜI CHƠI</span>
@@ -204,7 +210,7 @@
 <span class="material-symbols-outlined text-sm">logout</span>
 </button>
 </div>
-<!-- Auth Link (Shown by default) -->
+<!-- Auth Link -->
 <a class="bg-primary-container text-on-primary-container font-button-text text-xs md:text-button-text px-4 md:px-6 py-2 md:py-3 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" href="#auth-section" id="login-btn-header">
                 ĐĂNG NHẬP
             </a>
@@ -227,78 +233,95 @@
 <p class="font-label-caps text-secondary mb-4">Bạn cần đăng nhập để tải bản Beta này</p>
 <a class="inline-block bg-xp-green text-black font-button-text px-8 py-4 beveled-edge uppercase" href="#auth-section">Đến trang đăng nhập</a>
 </div>
-<!-- If Logged In: Download Button -->
-<div class="hidden" id="auth-download-area">
+<!-- If Logged In: Download Button & OS Choice -->
+<div class="hidden space-y-4" id="auth-download-area">
+<div class="grid grid-cols-3 gap-2" id="os-selection">
+<button class="os-btn flex flex-col items-center p-3 bg-surface-container beveled-edge hover:bg-surface-container-highest transition-colors active" data-os="windows">
+<span class="material-symbols-outlined text-2xl">desktop_windows</span>
+<span class="text-[10px] mt-1 font-label-caps">WIN</span>
+</button>
+<button class="os-btn flex flex-col items-center p-3 bg-surface-container beveled-edge hover:bg-surface-container-highest transition-colors" data-os="macos">
+<span class="material-symbols-outlined text-2xl">desktop_mac</span>
+<span class="text-[10px] mt-1 font-label-caps">MAC</span>
+</button>
+<button class="os-btn flex flex-col items-center p-3 bg-surface-container beveled-edge hover:bg-surface-container-highest transition-colors" data-os="android">
+<span class="material-symbols-outlined text-2xl">android</span>
+<span class="text-[10px] mt-1 font-label-caps">APK</span>
+</button>
+</div>
 <button class="btn-download-animated w-full bg-xp-green text-black font-button-text text-xl py-6 beveled-edge uppercase flex flex-col items-center gap-2 group" id="download-btn">
-<span id="btn-text">TẢI XUỐNG NGAY (.MCWORLD)</span>
+<span id="btn-text">TẢI XUỐNG (.MCWORLD)</span>
 <div class="hidden w-4/5 h-2 bg-black/30 rounded-full mt-2 overflow-hidden" id="progress-bar-container">
 <div class="h-full bg-white w-0 transition-all duration-[5000ms] ease-linear" id="progress-bar-fill"></div>
 </div>
 </button>
-<p class="mt-4 font-label-caps text-xs text-xp-green/60 uppercase tracking-widest animate-pulse">Cần tối thiểu 500MB trống</p>
+<p class="mt-4 font-label-caps text-xs text-xp-green/60 uppercase tracking-widest animate-pulse">Dung lượng: ~482 MB</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Auth Section (Modal-like) -->
-<section class="relative min-h-screen flex items-center justify-center px-margin-mobile py-section-gap overflow-hidden bg-background" id="auth-section">
-<div class="relative z-10 w-full max-w-md">
-<div class="mb-8 flex items-center gap-4">
+<!-- Auth Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-margin-mobile py-section-gap bg-background" id="auth-section">
+<div class="w-full max-w-md">
+<div class="mb-6">
 <a class="flex items-center gap-2 text-on-surface-variant hover:text-xp-green transition-colors group" href="#top">
 <span class="material-symbols-outlined">arrow_back</span>
 <span class="font-label-caps text-xs uppercase">Về trang chủ</span>
 </a>
 </div>
-<!-- Tabs Navigation -->
-<div class="flex gap-1 mb-0">
-<button class="flex-1 py-4 px-6 font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors bg-surface-container-highest text-xp-green" id="login-tab-btn">Đăng nhập</button>
-<button class="flex-1 py-4 px-6 font-button-text text-button-text uppercase beveled-edge rounded-t-lg transition-colors bg-surface-container text-on-surface-variant" id="register-tab-btn">Đăng ký</button>
+<!-- Tabs Navigation (Professional, No-overflow) -->
+<div class="flex w-full border-b border-outline-variant">
+<button class="flex-1 py-4 font-button-text text-button-text uppercase transition-all auth-tab-active" id="login-tab-btn">
+                    Đăng nhập
+                </button>
+<button class="flex-1 py-4 font-button-text text-button-text uppercase transition-all text-on-surface-variant hover:bg-surface-container-low" id="register-tab-btn">
+                    Đăng ký
+                </button>
 </div>
-<div class="bg-surface-container-highest border border-outline-variant p-8 beveled-edge pixel-texture rounded-b-lg shadow-2xl">
+<!-- Auth Forms Container -->
+<div class="bg-surface-container-highest border-x border-b border-outline-variant p-6 md:p-8 beveled-edge pixel-texture rounded-b-lg shadow-2xl">
 <!-- Login Form -->
 <form class="space-y-6" id="login-form">
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="login-email" placeholder="player@minecraft.net" required="" type="email"/>
+<label class="font-label-caps text-xs text-on-surface-variant uppercase block">Email</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors rounded-none" id="login-email" placeholder="player@minecraft.net" required="" type="email"/>
 </div>
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="login-password" placeholder="••••••••" required="" type="password"/>
+<label class="font-label-caps text-xs text-on-surface-variant uppercase block">Mật khẩu</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors rounded-none" id="login-password" placeholder="••••••••" required="" type="password"/>
 </div>
-<div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="login-error-msg"></div>
-<button class="w-full bg-primary-container text-on-primary-container font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform" type="submit">ĐĂNG NHẬP</button>
+<button class="w-full bg-primary-container text-on-primary-container font-button-text py-4 beveled-edge uppercase active:scale-[0.98] transition-transform" type="submit">ĐĂNG NHẬP</button>
 </form>
 <!-- Register Form -->
 <form class="hidden space-y-6" id="register-form">
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Họ và tên</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-name" placeholder="Steve Minecraft" required="" type="text"/>
+<label class="font-label-caps text-xs text-on-surface-variant uppercase block">Họ và tên</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors rounded-none" id="register-name" placeholder="Steve Minecraft" required="" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Email</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-email" placeholder="player@minecraft.net" required="" type="email"/>
+<label class="font-label-caps text-xs text-on-surface-variant uppercase block">Email</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors rounded-none" id="register-email" placeholder="player@minecraft.net" required="" type="email"/>
 </div>
 <div class="space-y-2">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Mật khẩu</label>
-<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors" id="register-password" placeholder="••••••••" required="" type="password"/>
+<label class="font-label-caps text-xs text-on-surface-variant uppercase block">Mật khẩu</label>
+<input class="w-full bg-surface-charcoal border-2 border-outline-variant focus:border-xp-green text-white px-4 py-3 outline-none transition-colors rounded-none" id="register-password" placeholder="••••••••" required="" type="password"/>
 </div>
-<div class="hidden text-error font-body-md text-sm p-3 bg-error-container/20 border border-error/20" id="register-error-msg"></div>
-<button class="w-full bg-xp-green text-black font-button-text text-button-text py-5 beveled-edge uppercase active:translate-x-[2px] active:translate-y-[2px] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.4)]" type="submit">ĐĂNG KÝ</button>
+<button class="w-full bg-xp-green text-black font-button-text py-4 beveled-edge uppercase active:scale-[0.98] transition-transform shadow-[0_0_15px_rgba(198,255,0,0.3)]" type="submit">ĐĂNG KÝ NGAY</button>
 </form>
 </div>
 </div>
 </section>
 </main>
 <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-dirt-darker">
-<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
 <div class="flex flex-col items-center md:items-start gap-2">
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">MINECRAFT HANG LƯU HUỲNH</span>
 <p class="font-body-md text-body-md text-secondary opacity-70">© 2024 Mojang AB. Microsoft Corporation.</p>
 </div>
 <nav class="flex flex-wrap justify-center gap-6">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">EULA</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Bảo mật</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Hỗ trợ</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">EULA</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Bảo mật</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Hỗ trợ</a>
 </nav>
 <div class="flex gap-4">
 <span class="material-symbols-outlined text-outline cursor-pointer hover:text-xp-green transition-colors">public</span>
@@ -307,37 +330,12 @@
 </div>
 </footer>
 <script>
-    // --- Data Management ---
-    const DB = {
-        getUsers: () => JSON.parse(localStorage.getItem('mc_users') || '[]'),
-        saveUser: (user) => {
-            const users = DB.getUsers();
-            users.push(user);
-            localStorage.setItem('mc_users', JSON.stringify(users));
-        },
-        findUser: (email) => DB.getUsers().find(u => u.email === email),
-        login: (user) => {
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userName', user.name);
-            localStorage.setItem('userEmail', user.email);
-        },
-        logout: () => {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userName');
-            localStorage.removeItem('userEmail');
-        },
-        isLoggedIn: () => localStorage.getItem('isLoggedIn') === 'true',
-        getUserName: () => localStorage.getItem('userName') || 'Người chơi'
-    };
-
-    // --- DOM Elements ---
+    // --- Auth Logic (localStorage) ---
     const loginTabBtn = document.getElementById('login-tab-btn');
     const registerTabBtn = document.getElementById('register-tab-btn');
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
-    const loginError = document.getElementById('login-error-msg');
-    const registerError = document.getElementById('register-error-msg');
-
+    
     const guestMessage = document.getElementById('guest-message');
     const authDownloadArea = document.getElementById('auth-download-area');
     const authSection = document.getElementById('auth-section');
@@ -348,86 +346,75 @@
     const logoutBtn = document.getElementById('logout-btn');
     const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
 
-    const downloadBtn = document.getElementById('download-btn');
-    const btnText = document.getElementById('btn-text');
-    const progressBarContainer = document.getElementById('progress-bar-container');
-    const progressBarFill = document.getElementById('progress-bar-fill');
-
-    // --- Tab Logic ---
-    function showLogin() {
+    // Tab Switching
+    function switchToLogin() {
         loginForm.classList.remove('hidden');
         registerForm.classList.add('hidden');
-        loginTabBtn.classList.replace('bg-surface-container', 'bg-surface-container-highest');
-        loginTabBtn.classList.replace('text-on-surface-variant', 'text-xp-green');
-        registerTabBtn.classList.replace('bg-surface-container-highest', 'bg-surface-container');
-        registerTabBtn.classList.replace('text-xp-green', 'text-on-surface-variant');
-        loginError.classList.add('hidden');
+        loginTabBtn.classList.add('auth-tab-active');
+        loginTabBtn.classList.remove('text-on-surface-variant');
+        registerTabBtn.classList.remove('auth-tab-active');
+        registerTabBtn.classList.add('text-on-surface-variant');
     }
 
-    function showRegister() {
+    function switchToRegister() {
         loginForm.classList.add('hidden');
         registerForm.classList.remove('hidden');
-        registerTabBtn.classList.replace('bg-surface-container', 'bg-surface-container-highest');
-        registerTabBtn.classList.replace('text-on-surface-variant', 'text-xp-green');
-        loginTabBtn.classList.replace('bg-surface-container-highest', 'bg-surface-container');
-        loginTabBtn.classList.replace('text-xp-green', 'text-on-surface-variant');
-        registerError.classList.add('hidden');
+        registerTabBtn.classList.add('auth-tab-active');
+        registerTabBtn.classList.remove('text-on-surface-variant');
+        loginTabBtn.classList.remove('auth-tab-active');
+        loginTabBtn.classList.add('text-on-surface-variant');
     }
 
-    loginTabBtn.addEventListener('click', showLogin);
-    registerTabBtn.addEventListener('click', showRegister);
+    loginTabBtn.addEventListener('click', switchToLogin);
+    registerTabBtn.addEventListener('click', switchToRegister);
 
-    // --- Auth Logic ---
+    // Registration Logic
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('register-name').value.trim();
         const email = document.getElementById('register-email').value.trim();
         const password = document.getElementById('register-password').value;
 
-        if (DB.findUser(email)) {
-            registerError.innerText = "Email này đã được sử dụng.";
-            registerError.classList.remove('hidden');
-            return;
-        }
+        if (!name || !email || !password) return;
 
-        DB.saveUser({ name, email, password });
-        showLogin();
+        const user = { name, email, password };
+        localStorage.setItem('minecraft_user', JSON.stringify(user));
+        
+        alert("Đăng ký thành công! Bạn có thể đăng nhập ngay.");
+        switchToLogin();
         document.getElementById('login-email').value = email;
-        loginError.innerText = "Đăng ký thành công! Hãy đăng nhập.";
-        loginError.classList.remove('hidden');
-        loginError.classList.replace('text-error', 'text-xp-green');
-        registerForm.reset();
     });
 
+    // Login Logic
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('login-email').value.trim();
-        const password = document.getElementById('login-password').value;
+        const emailInput = document.getElementById('login-email').value.trim();
+        const passwordInput = document.getElementById('login-password').value;
 
-        const user = DB.findUser(email);
-        if (user && user.password === password) {
-            DB.login(user);
+        const storedUser = JSON.parse(localStorage.getItem('minecraft_user'));
+
+        if (storedUser && storedUser.email === emailInput && storedUser.password === passwordInput) {
+            localStorage.setItem('isLoggedIn', 'true');
+            alert("Đăng nhập thành công!");
             updateUI();
             window.location.hash = "top";
         } else {
-            loginError.innerText = "Email hoặc mật khẩu không đúng.";
-            loginError.classList.remove('hidden');
-            loginError.classList.replace('text-xp-green', 'text-error');
+            alert("Email hoặc mật khẩu không chính xác!");
         }
     });
 
     function updateUI() {
-        const loggedIn = DB.isLoggedIn();
-        const name = DB.getUserName();
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const user = JSON.parse(localStorage.getItem('minecraft_user'));
 
-        if (loggedIn) {
+        if (isLoggedIn && user) {
             authSection.classList.add('hidden');
             guestMessage.classList.add('hidden');
             authDownloadArea.classList.remove('hidden');
             loginBtnHeader.classList.add('hidden');
             userProfileWidget.classList.remove('hidden');
             userProfileWidget.classList.add('flex');
-            userProfileName.innerText = name.toUpperCase();
+            userProfileName.innerText = user.name.toUpperCase();
             mobileLogoutBtn.style.display = 'block';
         } else {
             authSection.classList.remove('hidden');
@@ -441,17 +428,36 @@
     }
 
     logoutBtn.addEventListener('click', () => {
-        DB.logout();
+        localStorage.removeItem('isLoggedIn');
         updateUI();
     });
 
     mobileLogoutBtn.addEventListener('click', () => {
-        DB.logout();
+        localStorage.removeItem('isLoggedIn');
         updateUI();
         document.getElementById('close-menu').click();
     });
 
-    // --- Download & Rickroll Logic ---
+    // --- OS Selection & Download Logic ---
+    const osBtns = document.querySelectorAll('.os-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const btnText = document.getElementById('btn-text');
+    const progressBarContainer = document.getElementById('progress-bar-container');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+
+    let currentOS = "windows";
+
+    osBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            osBtns.forEach(b => b.classList.remove('bg-surface-container-highest', 'border-xp-green'));
+            btn.classList.add('bg-surface-container-highest', 'border-xp-green');
+            currentOS = btn.dataset.os;
+            
+            const extensions = { windows: ".MCWORLD", macos: ".DMG", android: ".APK" };
+            btnText.innerText = `TẢI XUỐNG (${extensions[currentOS]})`;
+        });
+    });
+
     let isDownloading = false;
     downloadBtn.addEventListener('click', () => {
         if (isDownloading) return;
@@ -460,14 +466,13 @@
         btnText.innerText = "ĐANG TẢI DỮ LIỆU CẤU TRÚC...";
         progressBarContainer.classList.remove('hidden');
         
-        // Reset and trigger CSS animation
         progressBarFill.style.width = '0%';
         setTimeout(() => {
             progressBarFill.style.width = '100%';
         }, 10);
 
         setTimeout(() => {
-            btnText.innerText = "HOÀN TẤT - ĐANG CHUẨN BỊ FILE!";
+            btnText.innerText = "HOÀN TẤT - ĐANG MỞ FILE!";
             setTimeout(() => {
                 window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
             }, 1000);
@@ -495,7 +500,9 @@
     closeMenuBtn.addEventListener('click', closeMenu);
     mobileMenuBackdrop.addEventListener('click', closeMenu);
 
-    // --- Init ---
+    // Initial OS styling
+    document.querySelector('.os-btn[data-os="windows"]').classList.add('bg-surface-container-highest', 'border-xp-green');
+
     document.addEventListener('DOMContentLoaded', updateUI);
 </script>
 </body></html>
